@@ -1,4 +1,5 @@
-import { Navbar } from "../components/Navbar/Navbar"
+
+import Sidebar from "../components/Navbar/Sidebar"
 
 export default function BoardLayout(
 {
@@ -8,7 +9,7 @@ export default function BoardLayout(
 }) {
     return (
         <div className="flex w-full h-screen">
-        <Navbar>asd</Navbar>
+        <Sidebar/>
         <main className="flex-grow">
             {children}
         </main>
