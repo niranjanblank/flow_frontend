@@ -30,7 +30,7 @@ const Popover = ({ children, content }: Props) => {
         {children}
       </div>
       {show && (
-        <div className="absolute z-10 border text-black border-gray-300 bg-white p-2 rounded-lg shadow-md">
+        <div className="absolute z-10 shadow-md">
           {content}
         </div>
       )}
