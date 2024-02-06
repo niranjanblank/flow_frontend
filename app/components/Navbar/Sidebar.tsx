@@ -2,8 +2,17 @@ import { Navbar } from "./Navbar";
 import { FaPlus } from "react-icons/fa"
 import Popover from "../Dialogs/Popover";
 import CreateBoard from "../Forms/CreateBoard";
+import axios from "axios";
 
-export default function Sidebar(){
+async function getBoardsOfCurrentUser(){
+  const response = await fetch("http://localhost:8000/boards/owner/1", {next: {
+    revalidate: 5
+  }});
+  const data = await response.json();
+  return data
+}
+export  default async function Sidebar(){
+  const board_data = await getBoardsOfCurrentUser()
     return (
         <Navbar>
         <div className="flex flex-col gap-1">
@@ -14,8 +23,10 @@ export default function Sidebar(){
             </Popover>
           </div>
           <ul className="text-xs ml-1 flex flex-col gap-1">
-            <li>Board 1</li>
-            <li>Board 2</li>
+            {board_data.map((board: any) => {
+              return (<li key={`board-${board.id}`}>{board.title}</li>)
+            })}
+  
           </ul>
         </div>
       </Navbar>

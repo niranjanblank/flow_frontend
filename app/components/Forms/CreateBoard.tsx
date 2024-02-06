@@ -22,13 +22,19 @@ export default function CreateBoard(){
                 "description": values.description,
                 "owner_id": 1
             }
-            try{
-                const response = await axios.post('http://localhost:8000/boards',data_to_post)
-                console.log(response.data);
-            }
-            catch (error){
-                console.log("Board couldn't be created")
-                console.error(error)
+            try {
+                const response = await fetch('http://localhost:8000/boards', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(data_to_post)
+                });
+                const data = await response.json();
+                console.log(data);
+            } catch (error) {
+                console.log("Board couldn't be created");
+                console.error(error);
             }
         }
     })
