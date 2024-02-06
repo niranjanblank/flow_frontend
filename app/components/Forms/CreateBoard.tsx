@@ -1,21 +1,35 @@
 "use client"
 import { useFormik } from "formik"
 import * as Yup from "yup"
-
+import axios from "axios"
 export default function CreateBoard(){
 
     const formik = useFormik({
         initialValues: {
-            title: ''
+            title: '',
+            description: ''
         },
         validationSchema: Yup.object({
             title: Yup.string()
             .required("Required")
-            .min(4, "Must be at least 4 Characters")
+            .min(4, "Must be at least 4 Characters"),
+            description: Yup.string()
         }),
-        onSubmit: values => {
+        onSubmit: async values => {
             // Handle form submission here
-            console.log(values);
+            const data_to_post = {
+                title: values.title,
+                "description": values.description,
+                "owner_id": 1
+            }
+            try{
+                const response = await axios.post('http://localhost:8000/boards',data_to_post)
+                console.log(response.data);
+            }
+            catch (error){
+                console.log("Board couldn't be created")
+                console.error(error)
+            }
         }
     })
 
@@ -33,6 +47,15 @@ export default function CreateBoard(){
                     onBlur={formik.handleBlur}
                     ></input>
                     {(formik.touched.title && formik.errors.title) && <p className="text-red-600 pt-2 text-xs">{formik.errors.title}</p>}
+                </div>
+                <div>
+                    <label className="text-xs">Description</label>
+                    <textarea
+                    id="description"
+                    className="w-full rounded-sm text-white bg-gray-800 px-2"
+                    value={formik.values.description}
+                    onChange={formik.handleChange}
+                    ></textarea>
                 </div>
                 <button type="submit" className="w-full h-6 bg-green-400 rounded hover:bg-green-600 ">Create</button>
         </form>
