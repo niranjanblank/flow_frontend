@@ -1,7 +1,7 @@
 const BoardCard = ({title, description}:{title: string, description: string}) => {
     return (
         
-        <div className="p-2 rounded-md text-gray-300 bg-gray-800 w-64 min-h-28 flex flex-col">
+        <div className="p-2 rounded-md text-gray-300 bg-gray-800 w-56 min-h-28 flex flex-col">
         <h1 className="text-md font-bold">
            {title}
         </h1>

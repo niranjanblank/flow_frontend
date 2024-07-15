@@ -1,4 +1,5 @@
-import BoardCard from "../components/BoardCard/BoardCard";
+import BoardCard from "../components/Board/BoardCard";
+import BoardList from "../components/Board/BoardList";
 import Popover from "../components/Dialogs/Popover";
 import CreateBoard from "../components/Forms/CreateBoard";
 import { Navbar } from "../components/Navbar/Navbar";
@@ -14,9 +15,9 @@ export default function Boards(){
 
 {/* all the boards and create board */}
         <div className="flex justify-center p-8">
-            <div className="grid  grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-2 ">
+            <div className="grid  grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2 ">
                 <Popover content={<CreateBoard/>}>
-                    <div className="p-2 rounded-md text-gray-300 bg-gray-800 w-64 flex flex-col justify-center items-center h-full">
+                    <div className="p-2 rounded-md text-gray-300 bg-gray-800 w-56 flex flex-col justify-center items-center h-full">
 
                         <h1 className="text-xs">
                             Create new board
@@ -27,10 +28,7 @@ export default function Boards(){
                             </h1>
                     </div>
                 </Popover>
-                <BoardCard title="Board 1" description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ut consequat odio, et scelerisque ante. "/>
-                <BoardCard title="Board 1" description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ut consequat odio, et scelerisque ante. "/>
-                <BoardCard title="Board 1" description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ut consequat odio, et scelerisque ante. "/>
-                <BoardCard title="Board 1" description=" "/>
+                <BoardList/>
                 </div>
             </div>
         </div>
