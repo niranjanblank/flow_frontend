@@ -2,6 +2,7 @@
 import { useFormik } from "formik"
 import * as Yup from "yup"
 import axios from "axios"
+
 export default function CreateBoard(){
 
     const formik = useFormik({
@@ -32,6 +33,7 @@ export default function CreateBoard(){
                 });
                 const data = await response.json();
                 console.log(data);
+
             } catch (error) {
                 console.log("Board couldn't be created");
                 console.error(error);
@@ -42,7 +44,7 @@ export default function CreateBoard(){
     return (
         <form 
         onSubmit={formik.handleSubmit}
-        className="flex flex-col justify-center items-center bg-gray-600 text-white rounded-md w-64 p-4 gap-2">
+        className="flex flex-col justify-center items-center bg-gray-600 text-white rounded-md w-64 p-4 gap-2 mt-2">
                 <h1> Create board</h1>
                 <div className="bg-red mt-2">
                     <label className="text-xs"> Board title * </label>

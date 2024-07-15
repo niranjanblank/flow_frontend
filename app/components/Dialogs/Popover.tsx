@@ -7,6 +7,8 @@ interface Props {
   content: React.ReactNode;
 }
 
+// here content is the form to be rendered in the popover
+//  children is the items that needs to be displayed before form in popover renders
 const Popover = ({ children, content }: Props) => {
   const [show, setShow] = useState(false);
   const popoverRef = useRef<HTMLDivElement>(null);
@@ -25,8 +27,8 @@ const Popover = ({ children, content }: Props) => {
   }, []);
 
   return (
-    <div ref={popoverRef} className="relative">
-      <div onClick={() => setShow(!show)}>
+    <div ref={popoverRef} className="relative h-full"  onClick={() => setShow(!show)}>
+      <div className='h-full'>
         {children}
       </div>
       {show && (
