@@ -1,10 +1,10 @@
 "use client"
 import { useFormik } from "formik"
 import * as Yup from "yup"
-import axios from "axios"
+import { useRouter } from "next/navigation"
 
 export default function CreateBoard(){
-
+    const router = useRouter()
     const formik = useFormik({
         initialValues: {
             title: '',
@@ -32,7 +32,10 @@ export default function CreateBoard(){
                     body: JSON.stringify(data_to_post)
                 });
                 const data = await response.json();
-                console.log(data);
+                if (data) {
+                    console.log('inside')
+                    router.refresh()
+                }
 
             } catch (error) {
                 console.log("Board couldn't be created");

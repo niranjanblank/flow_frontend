@@ -5,9 +5,10 @@ import CreateBoard from "../Forms/CreateBoard";
 import axios from "axios";
 
 async function getBoardsOfCurrentUser(){
-  const response = await fetch("http://localhost:8000/boards/owner/1", {next: {
-    revalidate: 5
-  }});
+  // const response = await fetch("http://localhost:8000/boards/owner/1", {next: {
+  //   revalidate: 5
+  // }});
+  const response = await fetch("http://localhost:8000/boards/owner/1", { cache: 'no-store' });
   const data = await response.json();
   return data
 }
