@@ -21,7 +21,7 @@ export default function BoardSideBar({board_data}:{board_data: any}){
             setBoardItems(board_data.length>4? board_data.slice(0,3):board_data)
         }
         console.log(showMorePressed,boardItems)
-    },[showMorePressed])
+    },[showMorePressed, board_data])
 
     return (
         <ul className="text-xs ml-1 flex flex-col gap-1">
