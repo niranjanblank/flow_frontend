@@ -1,5 +1,6 @@
 import BoardCard from "../components/Board/BoardCard";
 import BoardList from "../components/Board/BoardList";
+import Drawer from "../components/Dialogs/Drawer";
 import Popover from "../components/Dialogs/Popover";
 import CreateBoard from "../components/Forms/CreateBoard";
 import { Navbar } from "../components/Navbar/Navbar";
