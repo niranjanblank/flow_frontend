@@ -2,6 +2,7 @@
 
 import Drawer from "@/app/components/Dialogs/Drawer";
 import { HiDotsHorizontal } from "react-icons/hi";
+import Settings from "./settings";
 
 
 // get individual board information
@@ -38,7 +39,9 @@ export default async function BoardDetails(
         <div className="p-3">
         <div className="p-3 flex justify-between">
             <h1 className="text-xl">{board_data.title}</h1>
-            <Drawer id={params.slug}><HiDotsHorizontal/></Drawer>
+            <Drawer drawerComponent={<HiDotsHorizontal/>}>
+            <Settings id={params.slug}></Settings>
+            </Drawer>
         </div>
         <hr></hr>
         </div>
