@@ -3,6 +3,7 @@
 import Drawer from "@/app/components/Dialogs/Drawer";
 import { HiDotsHorizontal } from "react-icons/hi";
 import Settings from "./settings";
+import ListCard from "@/app/components/List/ListCard";
 
 
 // get individual board information
@@ -44,6 +45,12 @@ export default async function BoardDetails(
             </Drawer>
         </div>
         <hr></hr>
+        {/* All the lists will be rendeered here */}
+        <div className="flex mt-4">
+
+            <ListCard/>
+            
+        </div>
         </div>
     )
 }
