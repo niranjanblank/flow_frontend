@@ -18,7 +18,7 @@ export default function Boards(){
         <div className="flex justify-center p-8">
             <div className="grid  grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2 ">
                 <Popover content={<CreateBoard/>}>
-                    <div className="p-2 rounded-md text-gray-300 bg-gray-800 w-56 flex flex-col justify-center items-center h-full">
+                    <div className="p-2 rounded-md text-gray-300 bg-gray-800 w-56 min-h-28 flex flex-col justify-center items-center h-full">
 
                         <h1 className="text-xs">
                             Create new board
