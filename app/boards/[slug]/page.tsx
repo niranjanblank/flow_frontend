@@ -37,20 +37,20 @@ export default async function BoardDetails(
     console.log(board_data)
    // need to implement logic when data is not found
     return (
-        <div className="p-3">
-        <div className="p-3 flex justify-between">
-            <h1 className="text-xl">{board_data.title}</h1>
-            <Drawer drawerComponent={<HiDotsHorizontal/>}>
-            <Settings id={params.slug}></Settings>
-            </Drawer>
-        </div>
-        <hr></hr>
-        {/* All the lists will be rendeered here */}
-        <div className="flex mt-4">
+        <div className="p-3 min-h-full flex flex-col">
+            <div className="p-3 flex justify-between">
+                <h1 className="text-xl">{board_data.title}</h1>
+                <Drawer drawerComponent={<HiDotsHorizontal/>}>
+                <Settings id={params.slug}></Settings>
+                </Drawer>
+            </div>
+            <hr></hr>
+            {/* All the lists will be rendeered here */}
+            <div className="flex mt-4 gap-2 max-w-full overflow-x-auto flex-grow  ">
 
-            <ListCard/>
-            
-        </div>
+                <ListCard/>
+
+            </div>
         </div>
     )
 }

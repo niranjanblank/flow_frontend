@@ -11,7 +11,7 @@ export default function BoardLayout(
     return (
         <div className="flex w-full h-screen">
         <Sidebar/>
-        <main className="flex-grow">
+        <main className="flex-grow overflow-x-auto">
             {children}
         </main>
         </div>

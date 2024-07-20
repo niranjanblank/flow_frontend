@@ -3,7 +3,7 @@ import { FaPlus } from "react-icons/fa";
 
 export default function ListCard(){
     return (
-        <div className="bg-zinc-900 text-gray-300 rounded-xl py-3 px-3 w-64">
+        <div className="bg-zinc-900 text-gray-300 rounded-xl py-3 px-3 min-w-64 h-fit">
             {/* header of the list */}
             <div className="flex justify-between items-center px-2">
                 <h1>List 1</h1>
