@@ -1,6 +1,7 @@
 import { HiDotsHorizontal } from "react-icons/hi"
 import { FaPlus } from "react-icons/fa";
 import CreateCard from "../Forms/CreateCard";
+import AddCard from "./AddCard";
 
 // get the carrds of currrent list
 async function getCardsinList(list_id:number){
@@ -25,13 +26,9 @@ export default async function ListCard({board_list}:{board_list:{id: number, tit
                         <div key={`card-${card.id}-list${board_list.id}`} className="bg-zinc-800 py-2 px-2 rounded-lg"> {card.title} </div>
                     )
                 })}
-               
-                <button className="hover:bg-zinc-700 gap-2 p-2 text-sm flex rounded-lg">
-                    <FaPlus/>
-                    <p>Add a card</p>
-                </button>
+                <AddCard list_id={board_list.id}/>
             </div>
-            <CreateCard list_id={board_list.id}/>
+           
         </div>
     )
 } 
