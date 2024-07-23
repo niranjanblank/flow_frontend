@@ -2,6 +2,7 @@ import { HiDotsHorizontal } from "react-icons/hi"
 import { FaPlus } from "react-icons/fa";
 import CreateCard from "../Forms/CreateCard";
 import AddCard from "./AddCard";
+import ListSetting from "./ListSetting";
 
 // get the carrds of currrent list
 async function getCardsinList(list_id:number){
@@ -17,7 +18,7 @@ export default async function ListCard({board_list}:{board_list:{id: number, tit
             {/* header of the list */}
             <div className="flex justify-between items-center px-2">
                 <h1>{board_list.title}</h1>
-                <div><HiDotsHorizontal/></div>
+                <ListSetting list_id={board_list.id}/>
             </div>
             {/* for listing cards of list */}
             <div className="flex flex-col gap-3 mt-2">

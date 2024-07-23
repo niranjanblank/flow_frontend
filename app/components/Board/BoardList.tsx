@@ -14,7 +14,6 @@ export  default async function BoardList(){
                   <BoardCard key={`board-${board.id}`} id={board.id} title={board.title} description={board.description}/>
               )
             })}
-        
 
         </>
     )
