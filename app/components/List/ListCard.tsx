@@ -3,6 +3,7 @@ import { FaPlus } from "react-icons/fa";
 import CreateCard from "../Forms/CreateCard";
 import AddCard from "./AddCard";
 import ListSetting from "./ListSetting";
+import SingleCard from "./SingleCard";
 
 // get the carrds of currrent list
 async function getCardsinList(list_id:number){
@@ -24,7 +25,7 @@ export default async function ListCard({board_list}:{board_list:{id: number, tit
             <div className="flex flex-col gap-3 mt-2">
                 {card_data.map(card => {
                     return (
-                        <div key={`card-${card.id}-list${board_list.id}`} className="bg-zinc-800 py-2 px-2 rounded-lg"> {card.title} </div>
+                        <SingleCard card={card} key={`card-${card.id}-list${card.list_id}`}/>
                     )
                 })}
                 <AddCard list_id={board_list.id}/>
