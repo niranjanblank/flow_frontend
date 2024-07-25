@@ -29,12 +29,14 @@ export default function LoginForm(){
                     body: loginDetails
                 });
 
-                const data = await response.json();
-                if (data){
-                    console.log("Token received", data);
-                    // Save the token to local storage
-                    localStorage.setItem('access_token', data.access_token);
-                }
+                if (!response.ok) {
+                    throw new Error('Login failed');
+                  }
+          
+                  const data = await response.json();
+                  document.cookie = `access_token=${data.access_token}; Path=/; `;
+                  window.location.href = '/boards'; // Redirect to protected page
+                  
             }
             catch (error){
                 console.log("Couldnt verify credentials")
