@@ -25,7 +25,7 @@ export  default async function Sidebar(){
             </Popover>
           </div>
           {/* Menu for the boards */}
-        <BoardSideBar board_data={board_data}/>
+          <BoardSideBar board_data={board_data}/>
         </div>
       </Navbar>
     )

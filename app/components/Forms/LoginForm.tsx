@@ -1,6 +1,9 @@
 "use client"
 import {useFormik} from "formik"
+import Link from "next/link";
 import * as Yup from "yup"
+
+// Login Form
 
 export default function LoginForm(){
 
@@ -11,8 +14,8 @@ export default function LoginForm(){
             password: ''
         },
         validationSchema : Yup.object({
-            username: Yup.string().required("Required").min(4,"Must be at least 4 characters"),
-            password: Yup.string().required("Required").min(4,"Must be at least 4 characters")
+            username: Yup.string().required("Please enter username").min(4,"Must be at least 4 characters"),
+            password: Yup.string().required("Please enter password").min(4,"Must be at least 4 characters")
         }),
         onSubmit: async values => {
             const loginDetails = new URLSearchParams({
@@ -49,20 +52,37 @@ export default function LoginForm(){
 
     return (
         <form 
-        className="bg-zinc-800 flex flex-col p-4  w-64 rounded-md gap-2"
+        className=" flex flex-col p-4  w-1/4 rounded-md gap-2"
         onSubmit={formik.handleSubmit}>
-            <label>Username</label>
-            <input type="text" id="username"
-            value={formik.values.username}
-            onChange={formik.handleChange}
-            />
-            <label>Password</label>
-            <input type="password"
-            id="password"
-            value={formik.values.password}
-            onChange={formik.handleChange}
-            />
-                <button type="submit" className="w-full h-6 bg-green-400 rounded hover:bg-green-600 ">Login</button>
+            <h1 className="text-3xl font-bold text-ce">Login</h1>
+            <div className="flex flex-col gap-1">
+                <label
+                className="text-sm text-gray-400"
+                >Username</label>
+                <input type="text" id="username"
+                className="border-gray-300 border-solid border rounded-md p-2"
+                value={formik.values.username}
+                onChange={formik.handleChange}
+                placeholder="Enter your username..."
+                />
+                {(formik.touched.username && formik.errors.username) && <p className="text-red-600 text-xs">{formik.errors.username}</p>}
+            </div>
+            <div className="flex flex-col gap-1 mt-4">
+                <label className="text-sm text-gray-400">Password</label>
+                <input type="password"
+                id="password"
+                value={formik.values.password}
+                onChange={formik.handleChange}
+                className="border-gray-300 border-solid border  rounded-md p-2"
+                placeholder="Enter your password..."
+                />
+
+                {(formik.touched.password && formik.errors.password) && <p className="text-red-600  text-xs">{formik.errors.password}</p>}
+            </div>
+            <div className="text-sm flex justify-end gap-2">
+                No account?  <Link href="/signup" className="font-bold"> Create account </Link>
+            </div>
+            <button type="submit" className="w-full mt-2 bg-zinc-800 rounded hover:bg-zinc-600 p-2 text-white ">Login</button>
         </form>
     )
 }

@@ -8,7 +8,7 @@ export async function middleware(request: NextRequest) {
 
     // checks if the token is available in cookies, if not redirect to login
     if (!token) {
-        return NextResponse.redirect(new URL('/', request.url));
+        return NextResponse.redirect(new URL('/login', request.url));
       }
     
     //   if we have token in cookie and check if the token is valid
@@ -23,7 +23,7 @@ export async function middleware(request: NextRequest) {
         return NextResponse.next();
       } else {
         // if not valid, redirect to login
-        return NextResponse.redirect(new URL('/', request.url));
+        return NextResponse.redirect(new URL('/login', request.url));
       }
     }
 
