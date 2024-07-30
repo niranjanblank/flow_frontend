@@ -4,17 +4,20 @@ import Popover from "../Dialogs/Popover";
 import CreateBoard from "../Forms/CreateBoard";
 import Link from "next/link";
 import BoardSideBar from "./BoardSideBar";
+import { getCookie } from "@/app/lib/auth";
+import { jwtDecode } from "jwt-decode";
+import { getBoardsOfCurrentUser } from "@/app/lib/db_queries";
 
-async function getBoardsOfCurrentUser(){
-  // const response = await fetch("http://localhost:8000/boards/owner/1", {next: {
-  //   revalidate: 5
-  // }});
-  const response = await fetch("http://localhost:8000/boards/owner/1", { cache: 'no-store' });
-  const data = await response.json();
-  return data
-}
+
 export  default async function Sidebar(){
-  const board_data = await getBoardsOfCurrentUser()
+
+  // getting the access token and user_id from the cookie
+  const token = getCookie('access_token');
+  // contains the user_id and username
+  const decodedToken = jwtDecode(token);
+
+  // get username
+  const board_data = await getBoardsOfCurrentUser(decodedToken.user_id)
     return (
         <Navbar>
         <div className="flex flex-col gap-1">

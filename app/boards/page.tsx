@@ -1,11 +1,12 @@
-import BoardCard from "../components/Board/BoardCard";
+
 import BoardList from "../components/Board/BoardList";
-import Drawer from "../components/Dialogs/Drawer";
 import Popover from "../components/Dialogs/Popover";
 import CreateBoard from "../components/Forms/CreateBoard";
-import { Navbar } from "../components/Navbar/Navbar";
 
-export default function Boards(){
+
+
+export default async function Boards(){
+
     return (
         <div className="w-full h-full">
             {/* Header */}

@@ -1,12 +1,18 @@
+import { getCookie } from "@/app/lib/auth";
 import BoardCard from "./BoardCard";
+import { jwtDecode } from "jwt-decode";
+import { getBoardsOfCurrentUser } from "@/app/lib/db_queries";
 
-async function getBoardsOfCurrentUser(){
-  const response = await fetch("http://localhost:8000/boards/owner/1", { cache: 'no-store' });
-  const data = await response.json();
-  return data
-}
+
+
 export  default async function BoardList(){
-  const board_data = await getBoardsOfCurrentUser()
+
+  // getting the access token and user_id from the cookie
+  const token = getCookie('access_token');
+  const decodedToken = jwtDecode(token);
+
+  const board_data = await getBoardsOfCurrentUser(decodedToken.user_id)
+  
     return (
         <>
           {board_data.map((board: any) => {

@@ -1,23 +1,15 @@
 "use client"
 
+import { deleteBoard } from "@/app/lib/db_queries";
 import { useRouter } from "next/navigation";
 import { MdDeleteOutline } from "react-icons/md";
-// delete the board
-async function deleteBoard(id: number){
-    const response = await fetch(`http://localhost:8000/boards/${id}`, {
-        method: 'DELETE',
-        headers: {
-          'Content-Type': 'application/json',
-        }});
-    const data = await response.json();
-    return data
-  }
-
 
 
 
 const Settings = ({id}:{id: number}) => {
     const router = useRouter()
+
+    // delete the board
     const onDeleteHandler = async (id:number) => {
         const deleted_data = await deleteBoard(id)
 
