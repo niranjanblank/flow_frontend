@@ -2,7 +2,6 @@ import { Navbar } from "./Navbar";
 import { FaPlus } from "react-icons/fa"
 import Popover from "../Dialogs/Popover";
 import CreateBoard from "../Forms/CreateBoard";
-import Link from "next/link";
 import BoardSideBar from "./BoardSideBar";
 import { getCookie } from "@/app/lib/auth";
 import { jwtDecode } from "jwt-decode";
@@ -23,7 +22,7 @@ export  default async function Sidebar(){
         <div className="flex flex-col gap-1">
           <div className="flex justify-between text-sm">
             <h1>Your boards</h1>
-            <Popover content={<CreateBoard/>}>
+            <Popover content={<CreateBoard user_id={decodedToken.user_id}/>}>
               <button><FaPlus /></button>
             </Popover>
           </div>

@@ -3,7 +3,7 @@ import { useFormik } from "formik"
 import * as Yup from "yup"
 import { useRouter } from "next/navigation"
 
-export default function CreateBoard(){
+export default function CreateBoard({user_id}:{user_id:number}){
     const router = useRouter()
     const formik = useFormik({
         initialValues: {
@@ -21,7 +21,7 @@ export default function CreateBoard(){
             const data_to_post = {
                 title: values.title,
                 "description": values.description,
-                "owner_id": 1
+                "owner_id": user_id
             }
             try {
                 const response = await fetch('http://localhost:8000/boards', {
@@ -29,7 +29,8 @@ export default function CreateBoard(){
                     headers: {
                         'Content-Type': 'application/json'
                     },
-                    body: JSON.stringify(data_to_post)
+                    body: JSON.stringify(data_to_post),
+                    credentials: 'include'
                 });
                 const data = await response.json();
                 if (data) {
