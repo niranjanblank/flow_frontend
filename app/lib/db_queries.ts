@@ -26,6 +26,13 @@ export async function getBoardData(id: number){
     return data
   }
 
+// get individual board information
+export async function getBoardDataWithListAndCard(id: number){
+  const response = await fetch(`http://localhost:8000/boards/data/${id}`, { cache: 'no-store' });
+  const data = await response.json();
+  return data
+}
+
 
 
   // get individual board information
