@@ -12,7 +12,7 @@ export default function ListCard({board_list, index}:{board_list:List, index: nu
     return (
         <Draggable
         index={index}
-        draggableId={board_list.id.toString()}
+        draggableId={`list-${board_list.id.toString()}`}
         >
         {(provided) => (
             <div 
@@ -28,23 +28,23 @@ export default function ListCard({board_list, index}:{board_list:List, index: nu
                     <ListSetting list_id={board_list.id}/>
                 </div>
                 {/* for listing cards of list */}
+                {/* droppable for the card */}
                 <Droppable
-                    droppableId={board_list.id.toString()} type="card"
+                    droppableId={`card-${board_list.id.toString()}`} type="card"
                 >
                     {(provided)=> (
                         <div className="flex flex-col gap-3 "
                         ref={provided.innerRef}
                         {...provided.droppableProps}
                         >
-                            {board_list.list_cards.map(card => {
+                            {board_list.list_cards.map((card,index) => {
                                 return (
-                                    <SingleCard card={card} key={`card-${card.id}-list${card.list_id}`}/>
+                                    <SingleCard card={card} key={`card-${card.id}-list${card.list_id}`} index={index}/>
                                 )
                             })}
-                              {provided.placeholder}  
+                            {provided.placeholder}  
                         </div>
                     )}
-        
                 </Droppable>
                 <AddCard list_id={board_list.id}/>
             </div>
