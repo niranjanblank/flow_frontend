@@ -46,7 +46,7 @@ export default function SingleCard({ card, index }:{card: Card,index: number}) {
           >
             <div
               className="bg-zinc-800 py-2 px-2 rounded-lg cursor-pointer"
-              // onClick={openModal}
+              onClick={openModal}
             >
               {card.title}
             </div>

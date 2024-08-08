@@ -50,10 +50,12 @@ export default function CreateList({board_id, setFormActivate}:{board_id:number,
         onSubmit: async values => {
             // form submission is handled here
             const data_to_post = {
-                title: values.title,
-                "board_id": board_id
+                "title": values.title,
+                "board_id": board_id,
+                order: null
             }
             //  try to post the data to the endpoint
+            console.log(data_to_post)
             try {
                 const response = await fetch('http://localhost:8000/board_list', {
                     method: 'POST',

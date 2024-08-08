@@ -22,7 +22,7 @@ export default async function BoardDetails(
 
    // need to implement logic when data is not found
     return (
-        <div className="p-3 min-h-full flex flex-col bg-red-300">
+        <div className="p-3 min-h-full flex flex-col ">
             <div className="p-3 flex justify-between">
                 <h1 className="text-xl">{board_data.title}</h1>
                 <Drawer drawerComponent={<HiDotsHorizontal/>}>

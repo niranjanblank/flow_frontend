@@ -7,7 +7,11 @@ import { Draggable, Droppable } from "@hello-pangea/dnd";
 
 
 
+
+
 export default function ListCard({board_list, index}:{board_list:List, index: number}){
+ 
+
 
     return (
         <Draggable
