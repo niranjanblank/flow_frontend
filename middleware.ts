@@ -5,7 +5,7 @@ import type { NextRequest } from 'next/server'
 export async function middleware(request: NextRequest) {
     // gets the token
     const token = request.cookies.get('access_token');
-  console.log(token)
+  
     // checks if the token is available in cookies, if not redirect to login
     if (!token) {
 

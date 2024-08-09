@@ -32,7 +32,7 @@ export default async function BoardDetails(
             <hr></hr>
             {/* All the lists will be rendeered here */}
             
-            <ListContainer board_data={board_data} />
+            <ListContainer board_list_data={board_data.board_lists} board_id={board_data.id} />
                
     
            

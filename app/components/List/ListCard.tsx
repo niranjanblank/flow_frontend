@@ -37,7 +37,7 @@ export default function ListCard({board_list, index}:{board_list:List, index: nu
                     droppableId={`card-${board_list.id.toString()}`} type="card"
                 >
                     {(provided)=> (
-                        <div className="flex flex-col gap-3 "
+                        <div className="flex flex-col gap-3 min-h-1 "
                         ref={provided.innerRef}
                         {...provided.droppableProps}
                         >
