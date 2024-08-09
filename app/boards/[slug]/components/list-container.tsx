@@ -6,6 +6,7 @@ import { DragDropContext, Droppable } from "@hello-pangea/dnd"
 import AddAnotherList from "@/app/components/List/AddAnotherListCard"
 import { useEffect, useState } from "react"
 import { updateListOrder } from "@/app/lib/db_queries/lists"
+import { updateCardOrder } from "@/app/lib/db_queries/cards"
 
 
 
@@ -104,6 +105,7 @@ export default function ListContainer({board_list_data, board_id}:{board_list_da
     
                 setData(newOrderedData)
                 // update to db
+                updateCardOrder({board_id:board_id, cards: reorderedCards})
                
             }
             else {
@@ -129,7 +131,9 @@ export default function ListContainer({board_list_data, board_id}:{board_list_da
 
             setData(newOrderedData)
 
-            // update db herer
+            // update db here
+            console.log(  )
+            updateCardOrder({board_id:board_id, cards: sourceList.list_cards.concat(destList.list_cards)})
 
             }
 
