@@ -5,6 +5,8 @@ import { Board, List } from "../../interfaces"
 import { DragDropContext, Droppable } from "@hello-pangea/dnd"
 import AddAnotherList from "@/app/components/List/AddAnotherListCard"
 import { useEffect, useState } from "react"
+import { updateListOrder } from "@/app/lib/db_queries/lists"
+
 
 
 
@@ -60,6 +62,7 @@ export default function ListContainer({board_list_data, board_id}:{board_list_da
             setData(items)
 
             // updating on backend
+            updateListOrder({board_lists: items, board_id:board_id})
 
         }
 
@@ -101,6 +104,7 @@ export default function ListContainer({board_list_data, board_id}:{board_list_da
     
                 setData(newOrderedData)
                 // update to db
+               
             }
             else {
             // moving the card to  another list
