@@ -23,7 +23,7 @@ export  default async function Sidebar(){
           <div className="flex justify-between text-sm">
             <h1>Your boards</h1>
             <Popover content={<CreateBoard user_id={decodedToken.user_id}/>}>
-              <button><FaPlus /></button>
+              <button><FaPlus className="" /></button>
             </Popover>
           </div>
           {/* Menu for the boards */}
