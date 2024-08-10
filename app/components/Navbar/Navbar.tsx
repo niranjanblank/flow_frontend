@@ -23,23 +23,32 @@ export function Navbar({
     return (
         <div className={`bg-zinc-800 text-gray-200 ${open ? 'min-w-72' : 'min-w-12'} flex flex-col transition-width duration-60 justify-between p-2 gap-2`}>
             <div>
-                {open ? (
-                    <Link className="flex justify-center p-10 items-center text-white" href="/boards">
-                        <h1 className="text-3xl font-bold">SoloPlanner</h1>
-                    </Link>
-                ) : (
-                    <Link className="flex justify-center py-10 items-center text-white" href="/boards">
-                        <h1 className="text-3xl font-bold">S</h1>
-                    </Link>
-                )}
-                <hr />
-                <div className={`flex  ${open ? "justify-between": "justify-center"} items-center pt-2`}>
-                    {open && <h1>Username Here</h1>}
+                <div className={`flex  ${open ? "justify-between": "justify-center"} items-center py-2 `}>
+                    {open && 
+                        (
+                        <div className="flex gap-2">
+                            {/* icon */}
+                            <div className="bg-red-300 rounded-lg p-2">
+                                NS
+                            </div>
+                            <div className="text-sm">
+                                <h1 className="font-bold">Full Name</h1>
+                                <h1 className="text-xs text-gray-400">@username</h1>
+                            </div>
+                        </div>)
+                    }
                     <button className="text-lg" onClick={onCloseHandler}>
                         {open ? <FaAngleLeft /> : <FaAngleRight />}
                     </button>
                 </div>
-                {open && <div className="mt-2">{children}</div>}
+                <hr className="border-gray-300" />
+                {open && (
+
+                        <Link  href="/boards">
+                        <h1 className="font-semibold text-sm pt-2">Boards</h1>
+                        </Link>
+                )}
+                {open && <div >{children}</div>}
             </div>
             <div className="flex gap-2 items-center hover:bg-zinc-700 p-2 rounded-lg cursor-pointer"
                 onClick={signout}>
