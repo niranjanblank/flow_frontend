@@ -10,6 +10,11 @@ interface UpdateDataWithBoard {
     board_lists: List[]
 }
 
+interface UpdateTitle {
+    list: List
+    title: string
+}
+
 export async function updateListOrder (data: UpdateDataWithBoard){
     
     const {board_lists, board_id} = data
@@ -47,3 +52,35 @@ export async function updateListOrder (data: UpdateDataWithBoard){
   
 }
 
+export async function updateListTitle(data:UpdateTitle) {
+        
+    const {list, title} = data
+    try {
+    
+            
+            const data_to_post = {
+                title: title
+            }
+
+       
+            // updating the order of the list
+            const response = await fetch(`http://localhost:8000/board_list/${list.id}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data_to_post),
+            });
+
+            if (!response.ok) {
+                throw new Error(`Failed to update list with ID: ${list.id}`);
+            }
+
+            const result = await response.json();
+            console.log(`List with ID: ${list.id} updated successfully`, result);
+    
+    }
+    catch (error) {
+        console.log("Error updating lists", error);
+    }
+}
