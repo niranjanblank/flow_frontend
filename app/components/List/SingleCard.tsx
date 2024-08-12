@@ -11,6 +11,7 @@ export default function SingleCard({ card, index }:{card: Card,index: number}) {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
+  // console.log(card)
 
 //   searches the query params, if it contains cardId then it opens a model with this card
   useEffect(() => {
@@ -36,6 +37,7 @@ export default function SingleCard({ card, index }:{card: Card,index: number}) {
     <Draggable
     draggableId={`card-${card.id.toString()}`}
     index={index}
+    isDragDisabled={isModalOpen}
     >
       {(provided)=>
         (

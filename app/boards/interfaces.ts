@@ -4,6 +4,9 @@ export interface Card {
     desc: string
     list_id: number
     order: number
+    created_at: string; 
+    due_date?: string;   
+    updated_at: string;
 }
 
 export interface List {
