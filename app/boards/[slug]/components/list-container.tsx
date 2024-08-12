@@ -7,6 +7,7 @@ import AddAnotherList from "@/app/components/List/AddAnotherListCard"
 import { useEffect, useState } from "react"
 import { updateListOrder } from "@/app/lib/db_queries/lists"
 import { updateCardOrder } from "@/app/lib/db_queries/cards"
+import { useRouter } from "next/navigation"
 
 
 
@@ -29,6 +30,8 @@ function reorderData<T>(list: T[], startIndex: number, endIndex: number){
 export default function ListContainer({board_list_data, board_id}:{board_list_data: List[], board_id:number}){
     const [data, setData] = useState(board_list_data)
 
+    const router = useRouter()
+
     useEffect(()=> {
          // Sort the lists by order in ascending order
          const sortedLists = board_list_data.map(list => ({
@@ -40,7 +43,7 @@ export default function ListContainer({board_list_data, board_id}:{board_list_da
     },[board_list_data])
 
 
-    const onDragEnd = (result: any) => {
+    const onDragEnd = async (result: any) => {
         const {destination, source, type} = result
 
         if (!destination) {
@@ -63,7 +66,9 @@ export default function ListContainer({board_list_data, board_id}:{board_list_da
             setData(items)
 
             // updating on backend
-            updateListOrder({board_lists: items, board_id:board_id})
+            if  (await updateListOrder({board_lists: items, board_id:board_id})){
+                router.refresh()
+            }
 
         }
 
@@ -105,7 +110,10 @@ export default function ListContainer({board_list_data, board_id}:{board_list_da
     
                 setData(newOrderedData)
                 // update to db
-                updateCardOrder({board_id:board_id, cards: reorderedCards})
+                if (await updateCardOrder({board_id:board_id, cards: reorderedCards})){
+                    router.refresh()
+                }
+
                
             }
             else {
@@ -132,8 +140,13 @@ export default function ListContainer({board_list_data, board_id}:{board_list_da
             setData(newOrderedData)
 
             // update db here
-            console.log(  )
-            updateCardOrder({board_id:board_id, cards: sourceList.list_cards.concat(destList.list_cards)})
+      
+            if (await updateCardOrder({board_id:board_id, cards: sourceList.list_cards.concat(destList.list_cards)})){
+
+                router.refresh()
+
+            }
+
 
             }
 

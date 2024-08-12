@@ -46,8 +46,10 @@ export async function updateListOrder (data: UpdateDataWithBoard){
 
         await Promise.all(updatePromises);
         console.log('All lists updated successfully.');
+        return true
     } catch (error) {
         console.log("Error updating lists", error);
+        return false
     }
   
 }
@@ -56,8 +58,7 @@ export async function updateListTitle(data:UpdateTitle) {
         
     const {list, title} = data
     try {
-    
-            
+
             const data_to_post = {
                 title: title
             }
@@ -78,9 +79,13 @@ export async function updateListTitle(data:UpdateTitle) {
 
             const result = await response.json();
             console.log(`List with ID: ${list.id} updated successfully`, result);
+            if (result) {
+                return true
+            }
     
     }
     catch (error) {
         console.log("Error updating lists", error);
+        return false
     }
 }

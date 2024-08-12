@@ -1,15 +1,19 @@
 import { List } from "@/app/boards/interfaces";
 import { updateListTitle } from "@/app/lib/db_queries/lists";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 export function ListHeader({ list_data }: { list_data: List }) {
     const [title, setTitle] = useState(list_data.title);
     const [isEditing, setIsEditing] = useState(false);
+    const router = useRouter()
 
-    const handleBlur = () => {
+    const handleBlur = async () => {
         setIsEditing(false);
         if (title.length > 0){
-            updateListTitle({list:list_data, title: title})
+            if (await updateListTitle({list:list_data, title: title})){
+                router.refresh()
+            }
         }
         else{
             setTitle(list_data.title)

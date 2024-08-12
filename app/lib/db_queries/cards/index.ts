@@ -14,7 +14,7 @@ interface UpdateData {
 export async function updateCardOrder (data: UpdateData){
     
     const {cards, board_id} = data
-    console.log(cards)
+
     try {
         // iterating through the list
         const updatePromises = cards.map(async (card) => {
@@ -43,8 +43,10 @@ export async function updateCardOrder (data: UpdateData){
 
         await Promise.all(updatePromises);
         console.log('All cards updated successfully.');
+        return true;
     } catch (error) {
         console.log("Error updating cards", error);
+        return false
     }
   
 }
