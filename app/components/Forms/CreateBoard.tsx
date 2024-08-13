@@ -1,6 +1,6 @@
 "use client"
 import { useFormik } from "formik"
-
+import * as Yup from "yup"
 import { useRouter } from "next/navigation"
 
 export default function CreateBoard({user_id}:{user_id:number}){

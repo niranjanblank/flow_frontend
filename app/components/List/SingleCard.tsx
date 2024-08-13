@@ -5,6 +5,8 @@ import { useEffect, useState } from 'react';
 import Modal from '../Dialogs/Modal';
 import { Draggable } from '@hello-pangea/dnd';
 import { Card } from '@/app/boards/interfaces';
+import { FaRegClock } from "react-icons/fa6";
+import moment from 'moment';
 
 export default function SingleCard({ card, index }:{card: Card,index: number}) {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -47,10 +49,19 @@ export default function SingleCard({ card, index }:{card: Card,index: number}) {
           {...provided.dragHandleProps}
           >
             <div
-              className="bg-zinc-800 py-2 px-2 rounded-lg cursor-pointer"
+              className="bg-zinc-800 py-2 px-2 rounded-lg cursor-pointer flex flex-col gap-2"
               onClick={openModal}
             >
-              {card.title}
+              <h1>
+                {card.title}
+              </h1>
+              {card.due_date?(
+                <div className='flex items-center gap-2 text-sm rounded-sm bg-gray-600 w-fit p-1 px-2'>
+                  <FaRegClock/>
+                  {moment(card.due_date).format("MMM Do YY")}
+                  </div>
+                ):""}
+              
             </div>
             {isModalOpen && <Modal card={card} onClose={closeModal} />}
         </div>

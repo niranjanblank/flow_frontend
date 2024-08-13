@@ -7,6 +7,7 @@ export interface Card {
     created_at: string; 
     due_date?: string;   
     updated_at: string;
+    completed: boolean
 }
 
 export interface List {

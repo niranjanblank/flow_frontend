@@ -23,11 +23,13 @@ export function CardUpdate({card}:{card: Card}){
     const formik = useFormik({
         initialValues: {
             desc: card.desc,
-            due_date: card.due_date
+            due_date: card.due_date,
+            completed: card.completed
         },
         validationSchema: Yup.object({
             desc: Yup.string(),
-            due_date: Yup.date().nullable()
+            due_date: Yup.date().nullable(),
+            completed: Yup.boolean()
         }),
         onSubmit: async values => {
               // Convert the due_date to an ISO 8601 string or keep it null
@@ -36,8 +38,11 @@ export function CardUpdate({card}:{card: Card}){
             // Handle form submission here
             const data_to_post = {
                 desc: values.desc,
-                due_date: formattedDueDate
+                due_date: formattedDueDate,
+                completed: values.completed
             };
+
+            console.log(data_to_post)
 
             try {
                 console.log(data_to_post)
@@ -94,10 +99,20 @@ export function CardUpdate({card}:{card: Card}){
                     onChange={handleDateChange} 
                     value={dueDate}
                 />
+                  <input 
+        type="checkbox" 
+        id="completed" 
+        checked={formik.values.completed} 
+        onChange={formik.handleChange} 
+        className="h-6 w-6 bg-gray-700 rounded-md border-gray-800 text-green-500 focus:ring-green-500 focus:border-green-500 hover:bg-gray-800 checked:bg-green-500 checked:border-transparent checked:ring-offset-0"
+        />
             </div>
+            {/* <div>
+        
+            </div> */}
             <button
             type="submit"
-        className="bg-gray-600 hover:bg-gray-700 w-fit py-1 px-2 rounded-sm ">Save</button>
+            className="bg-gray-600 hover:bg-gray-700 w-fit py-1 px-2 rounded-sm ">Save</button>
   </form>
     )
 }
