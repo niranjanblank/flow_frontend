@@ -51,3 +51,16 @@ export async function updateCardOrder (data: UpdateData){
   
 }
 
+// delete the card
+export async function deleteCard(id: number){
+    const response = await fetch(`http://localhost:8000/list_card/${id}`, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+        }});
+    const data = await response.json();
+    return data
+  }
+
+  
+

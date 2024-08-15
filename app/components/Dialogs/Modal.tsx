@@ -5,11 +5,14 @@ import { MdOutlineDeleteOutline } from "react-icons/md";
 
 import{Card} from "../../boards/interfaces"
 import { CardUpdate } from '../Forms/CardUpdate';
+import { deleteCard } from '@/app/lib/db_queries/cards';
+import { useRouter } from 'next/navigation';
 
 
 const Modal = ({ card, onClose }:{card: Card, onClose: any}) => {
   const modalRef = useRef<HTMLDivElement>(null);
   // for datetime
+  const router = useRouter()
 
 
 //   checks if clicked outside of modal
@@ -27,6 +30,12 @@ const Modal = ({ card, onClose }:{card: Card, onClose: any}) => {
   }, [onClose]);
 
   // deleting card 
+  const onDeleteHandler = async () => {
+    const result = await deleteCard(card.id)
+    if (result) {
+      router.refresh()
+    }
+  }
 
   // copy the current link to the clipboard
   const handleCopyLink = () => {
@@ -56,6 +65,7 @@ const Modal = ({ card, onClose }:{card: Card, onClose: any}) => {
                     <div 
                       className='bg-zinc-500  
                       bg-opacity-70 p-1 rounded-md flex items-center gap-2 text-md hover:bg-red-400'
+                      onClick={onDeleteHandler}
                       >
                         <MdOutlineDeleteOutline className='text-lg'/>
                         <p>Delete Card </p>
