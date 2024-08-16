@@ -1,21 +1,35 @@
-// This components the card that represent board in the board dashboard
-
+import { Board } from "@/app/boards/interfaces";
 import Link from "next/link";
 
-
-const BoardCard = ({title, id, description}:{title: string, id: number, description: string}) => {
+const BoardCard = ({ board }: { board: Board }) => {
     return (
-        <Link href={`/boards/${id}`}>
-            <div className="p-2 rounded-md text-gray-300 bg-gray-800 w-56 min-h-28 flex flex-col">
-            <h1 className="text-md font-bold">
-            {title}
-            </h1>
-                <h1 className="text-xs mt-2">
-                {description}
-                </h1>
+        <Link href={`/boards/${board.id}`}>
+            <div 
+                className="relative p-2 rounded-md text-gray-300 w-56 min-h-28 flex flex-col"
+                style={{
+                    backgroundImage: board.background_image_url
+                        ? `url(${board.background_image_url})`
+                        : undefined,
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center',
+                    backgroundColor: board.background_image_url ? 'transparent' : '#1f2937', 
+                }}
+            >
+                {/* Overlay */}
+                <div className="absolute inset-0 bg-black opacity-50 rounded-md pointer-events-none"></div>
+                
+                {/* Text Content */}
+                <div className="relative z-5">
+                    <h1 className="text-md font-bold">
+                        {board.title}
+                    </h1>
+                    <h1 className="text-xs mt-2">
+                        {board.description}
+                    </h1>
+                </div>
             </div>
         </Link>
-    )
+    );
 }
 
-export default BoardCard
+export default BoardCard;

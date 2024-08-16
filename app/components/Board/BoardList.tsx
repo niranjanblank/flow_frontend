@@ -17,7 +17,7 @@ export  default async function BoardList(){
         <>
           {board_data.map((board: any) => {
               return (
-                  <BoardCard key={`board-${board.id}`} id={board.id} title={board.title} description={board.description}/>
+                  <BoardCard key={`board-${board.id}`} board={board}/>
               )
             })}
 

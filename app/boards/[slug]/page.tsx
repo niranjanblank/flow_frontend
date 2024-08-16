@@ -19,7 +19,6 @@ export default async function BoardDetails(
 {
     
     const board_data:Board = await getBoardDataWithListAndCard(params.slug)
-
    // need to implement logic when data is not found
     return (
         <div className="p-3 min-h-full flex flex-col ">

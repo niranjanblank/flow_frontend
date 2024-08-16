@@ -23,5 +23,6 @@ export interface Board {
     title: string
     description: string
     owner_id: number
-    board_lists: List[],
+    board_lists: List[]
+    background_image_url: string
 }
