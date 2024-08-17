@@ -161,7 +161,7 @@ export default function ListContainer({board_list_data, board_id}:{board_list_da
         <Droppable droppableId="lists" type="list" direction="horizontal">
             {
             (provided) =>  (
-                <div className="flex mt-4 gap-2 max-w-full overflow-x-auto flex-grow"
+                <div className="flex mt-4 gap-2 px-2 max-w-full overflow-x-auto flex-grow"
                     {...provided.droppableProps}
                     ref={provided.innerRef}
                     >
