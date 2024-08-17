@@ -7,6 +7,7 @@ import AddAnotherList from "@/app/components/List/AddAnotherListCard";
 import {  getBoardDataWithListAndCard } from "@/app/lib/db_queries";
 import { Board} from "../interfaces";
 import ListContainer from "./components/list-container";
+import { getTemplateImages } from "@/app/lib/db_queries/boards";
 
 
 export default async function BoardDetails(
@@ -19,13 +20,16 @@ export default async function BoardDetails(
 {
     
     const board_data:Board = await getBoardDataWithListAndCard(params.slug)
+    const template_images: string[] = await getTemplateImages()
    // need to implement logic when data is not found
     return (
         <div className="p-3 min-h-full flex flex-col ">
             <div className="p-3 flex justify-between">
                 <h1 className="text-xl">{board_data.title}</h1>
                 <Drawer drawerComponent={<HiDotsHorizontal/>}>
-                <Settings id={params.slug}></Settings>
+                    <Settings board={board_data}
+                    template_images={template_images}
+                    ></Settings>
                 </Drawer>
             </div>
             <hr></hr>
