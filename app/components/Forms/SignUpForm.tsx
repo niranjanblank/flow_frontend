@@ -1,6 +1,7 @@
 "use client"
 import {useFormik} from "formik"
 import Link from "next/link";
+import { toast } from "react-toastify";
 import * as Yup from "yup"
 
 // Login Form
@@ -40,12 +41,14 @@ export default function SignUpForm(){
                   }
           
                   const data = await response.json();
+                  toast.success("Account created. You can now login")
                   console.log("User created")
                   window.location.href = '/login'; // Redirect to protected page
                   
             }
             catch (error){
                 console.log("Couldnt sign up")
+                toast.error("Failed to create account")
                 console.error(error)
             }
 

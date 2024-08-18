@@ -7,6 +7,7 @@ import{Card} from "../../boards/interfaces"
 import { CardUpdate } from '../Forms/CardUpdate';
 import { deleteCard } from '@/app/lib/db_queries/cards';
 import { useRouter } from 'next/navigation';
+import { toast } from 'react-toastify';
 
 
 const Modal = ({ card, onClose }:{card: Card, onClose: any}) => {
@@ -33,7 +34,11 @@ const Modal = ({ card, onClose }:{card: Card, onClose: any}) => {
   const onDeleteHandler = async () => {
     const result = await deleteCard(card.id)
     if (result) {
+      toast.success("Card Deleted")
       router.refresh()
+    }
+    else{
+      toast.error("Failed to delete Card")
     }
   }
 

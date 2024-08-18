@@ -1,5 +1,6 @@
 "use client"
 import { useRouter } from "next/navigation";
+import { toast } from "react-toastify";
 
 // delete the list
 async function deleteList(id: number){
@@ -23,7 +24,11 @@ export default function ListSettingMenu({list_id}:{list_id: number}){
         const delete_result =  await deleteList(id)
         console.log(delete_result)
         if (delete_result.deleted){
+            toast.info("List deleted")
             router.refresh()
+        }
+        else {
+            toast.error("Failed to delete list")
         }
     }
 

@@ -8,6 +8,7 @@ import { getTemplateImages } from "../lib/db_queries/boards";
 
 
 
+
 export default async function Boards(){
 
       // getting the access token and user_id from the cookie
@@ -20,6 +21,7 @@ export default async function Boards(){
 
     return (
         <div className="w-full h-full">
+   
             {/* Header */}
             <div className="flex justify-center p-10 items-center text-gray-500 ">
                 <h1 className="text-3xl font-bold">SoloPlanner</h1>

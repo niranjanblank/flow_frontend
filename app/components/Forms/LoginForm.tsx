@@ -1,6 +1,7 @@
 "use client"
 import {useFormik} from "formik"
 import Link from "next/link";
+import { toast } from "react-toastify";
 import * as Yup from "yup"
 
 // Login Form
@@ -43,6 +44,7 @@ export default function LoginForm(){
             }
             catch (error){
                 console.log("Couldnt verify credentials")
+                toast.error("Couldnt verify credentials")
                 console.error(error)
             }
 

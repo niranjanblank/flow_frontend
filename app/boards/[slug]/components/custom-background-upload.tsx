@@ -2,6 +2,7 @@ import { useState } from "react";
 import { FaPlus } from "react-icons/fa";
 import { updateBoardImage } from "@/app/lib/db_queries/boards";
 import { useRouter } from "next/navigation";
+import { toast } from "react-toastify";
 
 export function CustomBackgroundUpload({ board_id }: { board_id: number }) {
     const [uploadedImage, setUploadedImage] = useState<string | null>(null);
@@ -33,9 +34,11 @@ export function CustomBackgroundUpload({ board_id }: { board_id: number }) {
     
             if (result.success) {
                 console.log("Image uploaded successfully:", result.data); // Log success message and data
+                toast.success("Background updated")
                 router.refresh()
             } else {
                 console.error("Failed to upload image:", result.data); // Log error message and data
+                toast.error("Failed to update background")
                 setError(result.data || "Failed to upload image."); // Set error state with a meaningful message
             }
         }

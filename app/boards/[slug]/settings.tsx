@@ -7,6 +7,7 @@ import { MdDeleteOutline } from "react-icons/md";
 import { UpdateBackGround } from "./components/update-background";
 import { useState } from "react";
 import { Board } from "../interfaces";
+import { toast } from "react-toastify";
 
 
 
@@ -20,6 +21,7 @@ const Settings = ({board, template_images}:{board: Board, template_images: strin
         const deleted_data = await deleteBoard(id)
 
         if(deleted_data.deleted){
+            toast.info("Board deleted")
             router.push("/boards")
             router.refresh()
         }

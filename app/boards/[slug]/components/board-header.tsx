@@ -4,6 +4,7 @@ import { useState } from "react"
 import { Board } from "../../interfaces"
 import { updateBoardTitle } from "@/app/lib/db_queries/boards"
 import { useRouter } from "next/navigation"
+import { toast } from "react-toastify"
 
 export function BoardHeader({board}:{board: Board}){
     const [title, setTitle] = useState<string>(board.title)
@@ -19,7 +20,9 @@ export function BoardHeader({board}:{board: Board}){
         if (title.length > 0 ){
             const response = await updateBoardTitle({title: title, board: board})
             if (response.success){
+                toast.success(`Board Title updated`)
                 router.refresh()
+                
             }
         }
         else{

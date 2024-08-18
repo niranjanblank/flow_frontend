@@ -1,6 +1,7 @@
 
 import Link from "next/link"
 import Sidebar from "../components/Navbar/Sidebar"
+import { ToastContainer } from "react-toastify"
 
 
 export default function BoardLayout(
@@ -11,6 +12,7 @@ export default function BoardLayout(
 }) {
     return (
         <div className="flex flex-col h-screen">
+                    
             <div className="bg-zinc-800 p-2 py-3 text-gray-100 border-b border-gray-500">
             <Link className="" href="/boards">
                         <h1 className="text-2xl font-bold">SoloPlanner</h1>
