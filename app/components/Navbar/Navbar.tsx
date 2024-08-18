@@ -4,10 +4,15 @@ import Link from "next/link"
 import { useState } from "react"
 import { FaAngleRight, FaAngleLeft } from "react-icons/fa"
 import { RiLogoutBoxLine } from "react-icons/ri";
+import { BsTrello } from "react-icons/bs";
+import { BsCalendar2CheckFill } from "react-icons/bs";
+import { usePathname } from "next/navigation"; 
 
 export function Navbar({
     children
 }: {children: React.ReactNode}){
+
+    const pathname = usePathname(); // Get the current path
 
     const signout = () => {
         document.cookie = 'access_token=; Path=/; Expires=Thu, 01 Jan 1970 00:00:00 GMT';
@@ -19,6 +24,8 @@ export function Navbar({
     const onCloseHandler = () => {
         setOpen(prevOpen => !prevOpen)
     }
+   // Function to check if the route is active
+    const isActive = (path: string) => pathname === path;
 
     return (
         <div className={`bg-zinc-800 text-gray-200 ${open ? 'min-w-72' : 'min-w-12'} flex flex-col transition-width duration-60 justify-between p-2 gap-2`}>
@@ -43,10 +50,18 @@ export function Navbar({
                 </div>
                 <hr className="border-gray-300" />
                 {open && (
-
-                        <Link  href="/boards">
-                        <h1 className="font-semibold text-sm pt-2">Boards</h1>
-                        </Link>
+                        <div className="flex flex-col bg font-semibold text-sm py-2 ">
+                            <Link  href="/boards">
+                            <span className={`flex items-center gap-2 p-2 ${isActive('/boards') ? 'bg-gray-700 rounded-md' : ''}`} >
+                                    <BsTrello className="text-lg" /> Boards 
+                            </span>
+                            </Link>
+                            <Link href="/boards/today">
+                            <span className={`flex items-center gap-2 p-2 ${isActive('/boards/today') ? 'bg-gray-700 rounded-md' : ''}`} >
+                                    <BsCalendar2CheckFill className="text-lg" /> Today 
+                            </span>
+                            </Link>
+                        </div>
                 )}
                 {open && <div >{children}</div>}
             </div>
