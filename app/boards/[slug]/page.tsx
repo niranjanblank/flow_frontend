@@ -38,7 +38,14 @@ export default async function BoardDetails(
             <div className="p-3 flex justify-between items-center bg-black bg-opacity-50">
   
                 <BoardHeader board={board_data}/>
-                <Drawer drawerComponent={<HiDotsHorizontal className="text-gray-200 text-2xl"/>}>
+                <Drawer 
+                title="Menu"
+                drawerComponent={
+                        <div
+                        className="p-4  hover:rounded-lg hover:bg-opacity-10">
+                            <HiDotsHorizontal className="text-gray-200 text-2xl "/> 
+                        </div>}>
+
                     <Settings board={board_data}
                     template_images={template_images}
                     ></Settings>

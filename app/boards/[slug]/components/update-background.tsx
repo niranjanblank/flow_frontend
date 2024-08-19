@@ -3,10 +3,8 @@ import { CustomBackgroundUpload } from "./custom-background-upload";
 
 export function UpdateBackGround({template_images, board}:{template_images: string[], board: Board}){
     return (
-        <div className="relative flex flex-col w-64 p-4 bg-zinc-900 rounded-lg -ml-40 gap-3">
+        <div className="relative flex flex-col w-64 p-4  rounded-lg gap-3">
 
-
-            <h1>Update Background</h1>
             <div>
             <h2 className="text-xs">Current Background</h2>
                 {/* current background */}
