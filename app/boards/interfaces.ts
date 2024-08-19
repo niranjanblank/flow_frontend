@@ -10,6 +10,13 @@ export interface Card {
     completed: boolean
 }
 
+export interface Label {
+    id: number
+    title: string
+    color: string
+    board_id: number
+}
+
 export interface List {
     id: number
     title: string
@@ -25,4 +32,5 @@ export interface Board {
     owner_id: number
     board_lists: List[]
     background_image_url: string
+    board_labels: Label[]
 }

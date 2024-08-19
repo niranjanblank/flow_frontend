@@ -9,6 +9,8 @@ import { useState } from "react";
 import { Board } from "../interfaces";
 import { toast } from "react-toastify";
 import Drawer from "@/app/components/Dialogs/Drawer";
+import { BiSolidLabel } from "react-icons/bi";
+import Labels from "./components/card/labels/labels";
 
 
 
@@ -48,6 +50,19 @@ const Settings = ({board, template_images}:{board: Board, template_images: strin
                 Change Background
             </div>)}>
                 <UpdateBackGround template_images={template_images} board={board}/>
+            </Drawer>
+            <Drawer
+            title="Labels"
+            drawerComponent={
+                (<div className="flex items-center gap-3 w-72 hover:bg-gray-500 hover:bg-opacity-10 bg-red rounded-lg p-2">
+                    <BiSolidLabel/>
+                Labels
+            </div>
+                )
+            }
+            >
+                <Labels board_id={board.id} label_data={board.board_labels}/>
+
             </Drawer>
             </div>
         </div>
