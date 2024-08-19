@@ -1,6 +1,7 @@
 "use client"
 
 import { Label } from "@/app/boards/interfaces"
+import { deleteLabel } from "@/app/lib/db_queries/labels";
 import { useFormik } from "formik";
 import { useRouter } from "next/navigation";
 import { ChangeEvent, useState } from "react";
@@ -68,6 +69,7 @@ export default function UpdateLabel({label}:{label: Label}){
         formik.setFieldValue('color', color)
       };
 
+
     return (
         <div className="flex p-2 gap-2 w-full flex-col">
             <div
@@ -99,6 +101,7 @@ export default function UpdateLabel({label}:{label: Label}){
             "
             type="submit">Update</button>
             </form>
+     
         </div>
     )
 }
