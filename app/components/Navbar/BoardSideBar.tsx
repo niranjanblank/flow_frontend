@@ -23,7 +23,7 @@ export default function BoardSideBar({board_data}:{board_data: any}){
             setBoardItems(board_data)
         }
         else {
-            setBoardItems(board_data.length>4? board_data.slice(0,3):board_data)
+            setBoardItems(board_data.length>=4? board_data.slice(0,3):board_data)
         }
         console.log(showMorePressed,boardItems)
     },[showMorePressed, board_data])
@@ -39,10 +39,14 @@ export default function BoardSideBar({board_data}:{board_data: any}){
             {board.title}
             </Link></li>)
         })}
+        {board_data.length>=4 && (
         <div onClick={onshowMorePressedHandler} className="flex justify-between">
             <h1>{showMorePressed?"Show Less":"Show More"}</h1>
-            {showMorePressed ?"":(<span className="bg-slate-300 w-8 rounded-lg flex justify-center text-black">{board_data.length-boardItems.length}</span>)}
-            </div>
+            {showMorePressed ?"":
+            (<span className="bg-slate-300 w-8 rounded-lg flex justify-center text-black">{board_data.length-boardItems.length}</span>)}
+        </div>
+        )}
+      
       </ul>
     )
 }
