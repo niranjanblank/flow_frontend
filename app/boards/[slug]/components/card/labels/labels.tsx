@@ -2,6 +2,8 @@ import { useState } from "react";
 import { CreateLabel } from "./create-label";
 import { Label } from "@/app/boards/interfaces";
 import Drawer from "@/app/components/Dialogs/Drawer";
+import { MdEdit } from "react-icons/md";
+import UpdateLabel from "./update-label";
 
 export default function Labels ({board_id, label_data}: {board_id: number, label_data: Label[]}) {
 
@@ -16,7 +18,14 @@ export default function Labels ({board_id, label_data}: {board_id: number, label
                   className="rounded-md flex w-full justify-center items-center p-2"
                   style={{backgroundColor:label.color}}
                   >{label.title}</div>
-                  <button>Edit</button>
+
+                  <Drawer 
+                  title="Update Label"
+                  drawerComponent={<button className="p-3 bg-slate-600 hover:bg-slate-700 rounded-md"><MdEdit/></button>}
+                  >
+                    <UpdateLabel label={label}/>
+                  </Drawer>
+                 
                 </div>
               ))}
         </div>
