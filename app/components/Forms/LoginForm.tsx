@@ -3,7 +3,7 @@ import {useFormik} from "formik"
 import Link from "next/link";
 import { toast } from "react-toastify";
 import * as Yup from "yup"
-
+import flow_logo from "../../../public/assets/flow.png"
 // Login Form
 
 export default function LoginForm(){
@@ -54,9 +54,12 @@ export default function LoginForm(){
 
     return (
         <form 
-        className=" flex flex-col p-4  w-1/4 rounded-md gap-2"
+        className="flex flex-col p-4  w-1/4 rounded-md gap-2 shadow-lg  py-8"
         onSubmit={formik.handleSubmit}>
-            <h1 className="text-3xl font-bold text-ce">Login</h1>
+            <div className="flex flex-col items-center gap-5">
+                <img src={flow_logo.src} className="w-[200px]"/>
+                <h1  className=" text-center">Login to continue</h1>
+                </div>
             <div className="flex flex-col gap-1">
                 <label
                 className="text-sm text-gray-400"

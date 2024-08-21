@@ -5,8 +5,9 @@ import Popover from "../components/Dialogs/Popover";
 import CreateBoard from "../components/Forms/CreateBoard";
 import { getCookie } from "../lib/auth";
 import { getTemplateImages } from "../lib/db_queries/boards";
+import Image from "next/image";
 
-
+import flow_logo from "../../public/assets/flow.png"
 
 
 export default async function Boards(){
@@ -24,7 +25,12 @@ export default async function Boards(){
    
             {/* Header */}
             <div className="flex justify-center p-10 items-center text-gray-500 ">
-                <h1 className="text-3xl font-bold">SoloPlanner</h1>
+            <Image 
+                        src={flow_logo} 
+                        alt="Flow Logo" 
+                        className="w-[200px]" 
+                        priority 
+                    />
             </div>
             <hr/>
 
@@ -38,9 +44,6 @@ export default async function Boards(){
                             Create new board
                         </h1>
                         
-                            <h1 className="text-xs">
-                                5 left
-                            </h1>
                     </div>
                 </Popover>
                 <BoardList/>
