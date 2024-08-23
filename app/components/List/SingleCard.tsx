@@ -4,16 +4,16 @@ import { useRouter, usePathname, useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import Modal from '../Dialogs/Modal';
 import { Draggable } from '@hello-pangea/dnd';
-import { Card } from '@/app/boards/interfaces';
+import { Card, Label } from '@/app/boards/interfaces';
 import { FaRegClock } from "react-icons/fa6";
 import moment from 'moment';
 
-export default function SingleCard({ card, index }:{card: Card,index: number}) {
+export default function SingleCard({ card, index, labels }:{card: Card,index: number,labels: Label[]}) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
-  // console.log(card)
+  console.log(card)
 
 //   searches the query params, if it contains cardId then it opens a model with this card
   useEffect(() => {
@@ -63,7 +63,7 @@ export default function SingleCard({ card, index }:{card: Card,index: number}) {
                 ):""}
               
             </div>
-            {isModalOpen && <Modal card={card} onClose={closeModal} />}
+            {isModalOpen && <Modal card={card} labels={labels} onClose={closeModal} />}
         </div>
         )
       }

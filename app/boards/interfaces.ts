@@ -8,6 +8,7 @@ export interface Card {
     due_date?: string;   
     updated_at: string;
     completed: boolean
+    labels: Label[]
 }
 
 export interface Label {

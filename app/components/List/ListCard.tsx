@@ -1,5 +1,5 @@
 "use client"
-import { List } from "@/app/boards/interfaces";
+import { Label, List } from "@/app/boards/interfaces";
 import AddCard from "./AddCard";
 import ListSetting from "./ListSetting";
 import SingleCard from "./SingleCard";
@@ -10,7 +10,7 @@ import { ListHeader } from "./ListHeader";
 
 
 
-export default function ListCard({board_list, index}:{board_list:List, index: number}){
+export default function ListCard({board_list, index, labels}:{board_list:List, index: number, labels: Label[]}){
  
 
 
@@ -44,7 +44,9 @@ export default function ListCard({board_list, index}:{board_list:List, index: nu
                         >
                             {board_list.list_cards.map((card,index) => {
                                 return (
-                                    <SingleCard card={card} key={`card-${card.id}-list${card.list_id}`} index={index}/>
+                                    <SingleCard card={card} 
+                                    labels={labels}
+                                    key={`card-${card.id}-list${card.list_id}`} index={index}/>
                                 )
                             })}
                             {provided.placeholder}  

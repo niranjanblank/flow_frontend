@@ -32,7 +32,7 @@ export function CreateLabel({board_id}:{board_id: number}){
       
 
             try {
-                console.log(data_to_post)
+          
                 if(values.title.length < 1){
                     toast.error("Please add title to label")
                 }

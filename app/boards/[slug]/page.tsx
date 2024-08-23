@@ -22,6 +22,7 @@ export default async function BoardDetails(
     
     const board_data:Board = await getBoardDataWithListAndCard(params.slug)
     const template_images: string[] = await getTemplateImages()
+  
    // need to implement logic when data is not found
     return (
         
@@ -54,7 +55,7 @@ export default async function BoardDetails(
       
             {/* All the lists will be rendeered here */}
             
-            <ListContainer board_list_data={board_data.board_lists} board_id={board_data.id} />
+            <ListContainer board_list_data={board_data.board_lists} labels={board_data.board_labels} board_id={board_data.id} />
                
         </div>
     )

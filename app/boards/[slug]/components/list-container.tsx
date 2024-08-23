@@ -1,7 +1,7 @@
 "use client"
 
 import ListCard from "@/app/components/List/ListCard"
-import { Board, List } from "../../interfaces"
+import { Board, List, Label } from "../../interfaces"
 import { DragDropContext, Droppable } from "@hello-pangea/dnd"
 import AddAnotherList from "@/app/components/List/AddAnotherListCard"
 import { useEffect, useState } from "react"
@@ -27,7 +27,7 @@ function reorderData<T>(list: T[], startIndex: number, endIndex: number){
 }
 
 
-export default function ListContainer({board_list_data, board_id}:{board_list_data: List[], board_id:number}){
+export default function ListContainer({board_list_data, board_id, labels}:{board_list_data: List[], board_id:number, labels: Label[]}){
     const [data, setData] = useState(board_list_data)
 
     const router = useRouter()
@@ -168,7 +168,9 @@ export default function ListContainer({board_list_data, board_id}:{board_list_da
                     {
                         data.map((board_list: List, index) => {
                             return (
-                                <ListCard key={`list-${board_list.id}`} board_list={board_list} index={index}/>
+                                <ListCard key={`list-${board_list.id}`} 
+                                labels ={labels}
+                                board_list={board_list} index={index}/>
                             )
                         })
                     }

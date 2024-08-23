@@ -3,15 +3,18 @@
 import { useEffect, useRef, useState } from 'react';
 import { MdOutlineDeleteOutline } from "react-icons/md";
 
-import{Card} from "../../boards/interfaces"
+import{Card, Label} from "../../boards/interfaces"
 import { CardUpdate } from '../Forms/CardUpdate';
 import { deleteCard } from '@/app/lib/db_queries/cards';
 import { useRouter } from 'next/navigation';
 import { toast } from 'react-toastify';
+import Popover from './Popover';
+import AssignLabel from '@/app/boards/[slug]/components/card/labels/assign-label';
 
 
-const Modal = ({ card, onClose }:{card: Card, onClose: any}) => {
+const Modal = ({ card, onClose, labels }:{card: Card, onClose: any, labels: Label[]}) => {
   const modalRef = useRef<HTMLDivElement>(null);
+  
   // for datetime
   const router = useRouter()
 
@@ -64,7 +67,7 @@ const Modal = ({ card, onClose }:{card: Card, onClose: any}) => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <CardUpdate card={card}/>
             
-                <div>
+                <div className='flex flex-col gap-1'>
                   {/* for actions */}
                     <p className="text-sm">Actions</p>
                     <div 
@@ -74,7 +77,16 @@ const Modal = ({ card, onClose }:{card: Card, onClose: any}) => {
                       >
                         <MdOutlineDeleteOutline className='text-lg'/>
                         <p>Delete Card </p>
-                     </div>
+                    </div>
+                    <Popover content={<AssignLabel card={card} labels={labels}/>}>
+                    <div 
+                      className='bg-zinc-500  
+                      bg-opacity-70 p-1 rounded-md flex items-center gap-2 text-md hover:bg-zinc-600'
+                      >
+                        <MdOutlineDeleteOutline className='text-lg'/>
+                        <p>Labels </p>
+                    </div>
+                    </Popover>
                 </div>
             </div>
       </div>
