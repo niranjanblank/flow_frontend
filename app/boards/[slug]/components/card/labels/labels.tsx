@@ -33,11 +33,8 @@ export default function Labels ({board_id, label_data}: {board_id: number, label
 
         if(deleted_data.deleted){
         toast.info("Label deleted")
-        router.refresh()
-
-              // Update the state by filtering out the deleted label
+        // Update the state by filtering out the deleted label
         setLabels((prevLabels) => prevLabels.filter(label => label.id !== id));
-
         router.refresh(); // Trigger a refresh to ensure server-side consistency
         }
         else{
@@ -45,12 +42,14 @@ export default function Labels ({board_id, label_data}: {board_id: number, label
         }
     }
 
+
+
   return (
     <div className="flex flex-col items-center ">
         <div className="flex flex-col w-full p-2 gap-1">
             {labels.map((label,index)=>(
                 <div 
-                key={`label-${index}`}
+                key={`label-${label.id}`}
                 className="flex w-full gap-1">
                   <div
                   className="rounded-md flex w-full justify-center items-center p-2"
@@ -61,7 +60,7 @@ export default function Labels ({board_id, label_data}: {board_id: number, label
                   title="Update Label"
                   drawerComponent={<button className="p-3 bg-slate-600 hover:bg-slate-700 rounded-md"><MdEdit/></button>}
                   >
-                    <UpdateLabel label={label}/>
+                    <UpdateLabel label={label} />
                   </Drawer>
                   <button className="p-3 bg-red-500 hover:bg-red-700 rounded-md text-white" onClick={()=> {onDeleteHandler(label.id)}}><MdDeleteForever /></button>
                  
