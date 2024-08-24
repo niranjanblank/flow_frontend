@@ -64,3 +64,9 @@ export async function deleteCard(id: number){
 
   
 
+// get card due today
+export async function getCardDueToday(){
+    const response = await fetch(`http://localhost:8000/list_card/due/due_today`, { cache: 'no-store' });
+    const data = await response.json();
+    return data
+}

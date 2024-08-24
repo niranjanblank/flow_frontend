@@ -35,3 +35,4 @@ export interface Board {
     background_image_url: string
     board_labels: Label[]
 }
+

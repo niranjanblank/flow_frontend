@@ -13,7 +13,7 @@ export default function SingleCard({ card, index, labels }:{card: Card,index: nu
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
-  console.log(card)
+
 
 //   searches the query params, if it contains cardId then it opens a model with this card
   useEffect(() => {

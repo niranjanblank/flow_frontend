@@ -68,3 +68,10 @@ export async function deleteLabelCardLink(card_id:number, label_id: number){
     return { success: false, data: errorMessage}
   }
 }
+
+// get label by board
+export async function getLabelByBoardId(board_id: number){
+  const response = await fetch(`http://localhost:8000/boards/${board_id}/labels`, { cache: 'no-store' });
+  const data = await response.json();
+  return data
+}
