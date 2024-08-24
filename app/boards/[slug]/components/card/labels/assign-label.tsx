@@ -29,7 +29,7 @@ export default function AssignLabel({card, labels }: { card: Card, labels: Label
                 updatedSelected.delete(labelId);
                 // Update the state after the successful API call
                 setSelectedLabels(updatedSelected);
-                router.refresh
+                router.refresh()
             } else {
                 toast.error("Label couldn't be removed");
                 return; // Exit if the API call fails

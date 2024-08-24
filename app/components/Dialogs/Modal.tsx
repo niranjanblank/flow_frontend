@@ -66,7 +66,6 @@ const Modal = ({ card, onClose, labels }:{card: Card, onClose: any, labels: Labe
         <h3 className="text-xl font-bold mb-4">{card.title}</h3>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <CardUpdate card={card}/>
-            
                 <div className='flex flex-col gap-1'>
                   {/* for actions */}
                     <p className="text-sm">Actions</p>

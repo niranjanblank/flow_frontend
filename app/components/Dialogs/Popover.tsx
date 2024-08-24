@@ -27,8 +27,8 @@ const Popover = ({ children, content }: Props) => {
   }, []);
 
   return (
-    <div ref={popoverRef} className="relative h-full"  >
-      <div className='h-full' onClick={() => setShow(!show)}>
+    <div ref={popoverRef} className="relative h-fit"  >
+      <div className='h-fit' onClick={() => setShow(!show)}>
         {children}
       </div>
       {show && (
