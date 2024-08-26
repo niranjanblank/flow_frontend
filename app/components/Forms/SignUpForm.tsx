@@ -1,5 +1,6 @@
 "use client"
 import {useFormik} from "formik"
+import Image from "next/image";
 import Link from "next/link";
 import { toast } from "react-toastify";
 import * as Yup from "yup"
@@ -58,8 +59,15 @@ export default function SignUpForm(){
 
     return (
         <form 
-        className=" flex flex-col p-4  md:w-2/4 rounded-md gap-2"
+        className=" flex flex-col p-4  md:w-2/4 rounded-md gap-2 "
         onSubmit={formik.handleSubmit}>
+             <Image
+                        src="/assets/flow.png" 
+                        alt="Flow Logo" 
+                        width={300} 
+                        height={120} 
+                        className="mx-auto mb-8"
+                    />
             <h1 className="text-3xl font-bold">Sign Up</h1>
             <div className="flex flex-col gap-1">
                 <label

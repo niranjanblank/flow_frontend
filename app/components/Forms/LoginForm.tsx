@@ -4,6 +4,7 @@ import Link from "next/link";
 import { toast } from "react-toastify";
 import * as Yup from "yup"
 import flow_logo from "../../../public/assets/flow.png"
+import Image from "next/image";
 // Login Form
 
 export default function LoginForm(){
@@ -54,10 +55,16 @@ export default function LoginForm(){
 
     return (
         <form 
-        className="flex flex-col p-4  w-1/4 rounded-md gap-2 shadow-lg  py-8"
+        className="flex flex-col p-4  md:w-2/4 rounded-md gap-2"
         onSubmit={formik.handleSubmit}>
             <div className="flex flex-col items-center gap-5">
-                <img src={flow_logo.src} className="w-[200px]"/>
+            <Image
+                        src="/assets/flow.png" 
+                        alt="Flow Logo" 
+                        width={300} 
+                        height={120} 
+                        className="mx-auto mb-8"
+                    />
                 <h1  className=" text-center">Login to continue</h1>
                 </div>
             <div className="flex flex-col gap-1">

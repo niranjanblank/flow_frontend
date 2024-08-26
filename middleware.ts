@@ -8,12 +8,16 @@ export async function middleware(request: NextRequest) {
   
     // checks if the token is available in cookies, if not redirect to login
     if (!token) {
+       // Allow access to /login, /signup, and / (home) without a token
+       if (request.nextUrl.pathname === '/login' || request.nextUrl.pathname === '/signup' || request.nextUrl.pathname === '/') {
+        return NextResponse.next();
+    }
 
         return NextResponse.redirect(new URL('/login', request.url));
       }
 
         // Ensure the token is a string
-  const tokenString = String(token.value);
+    const tokenString = String(token.value);
 
     
     //   if we have token in cookie and check if the token is valid
@@ -24,8 +28,13 @@ export async function middleware(request: NextRequest) {
           'Authorization': `Bearer ${tokenString}`
         }
       });
+        // If the token is valid, allow access
       if (verifyResponse.ok) {
-        return NextResponse.next();
+         // Redirect logged-in users from /, /login, or /signup to /boards
+         if (request.nextUrl.pathname === '/' || request.nextUrl.pathname === '/login' || request.nextUrl.pathname === '/signup') {
+          return NextResponse.redirect(new URL('/boards', request.url));
+        }
+      return NextResponse.next();
       } else {
       // if not valid, delete the token and redirect to login
         const response = NextResponse.redirect(new URL('/login', request.url));
@@ -35,7 +44,10 @@ export async function middleware(request: NextRequest) {
     }
 
     export const config = {
-        matcher: [
-          '/boards/:path*',  // Protect /boards and all its subroutes
-        ],
-      };
+      matcher: [
+        '/boards/:path*',  // Protect /boards and all its subroutes
+        '/',               // Add the home route to the matcher
+        '/login',          // Add the login route to the matcher
+        '/signup',         // Add the signup route to the matcher
+      ],
+  };

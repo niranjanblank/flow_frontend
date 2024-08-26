@@ -26,7 +26,7 @@ export default async function BoardDetails(
    // need to implement logic when data is not found
     return (
         
-        <div className=" min-h-full flex flex-col"
+        <div className="min-h-full flex flex-col"
         style={{
             backgroundImage: board_data.background_image_url
                 ? `url(${board_data.background_image_url})`
