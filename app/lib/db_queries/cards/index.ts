@@ -70,3 +70,10 @@ export async function getCardDueToday(){
     const data = await response.json();
     return data
 }
+
+// get card due today
+export async function getOverdueCards(){
+    const response = await fetch(`http://localhost:8000/list_card/overdue/today`, { cache: 'no-store' });
+    const data = await response.json();
+    return data
+}

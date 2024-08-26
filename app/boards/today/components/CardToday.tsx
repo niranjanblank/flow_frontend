@@ -12,6 +12,7 @@ export default function CardToday({card, }:{card: any}){
     const router = useRouter();
     const pathname = usePathname();
     const searchParams = useSearchParams();
+    const [labels, setLabels] = useState([])
     
  
 
@@ -22,6 +23,17 @@ useEffect(() => {
       setIsModalOpen(true);
     }
   }, [searchParams, card.id]);
+
+useEffect(()=> {
+  const getlabel = async () => {
+    let data = await getLabelByBoardId(card.belongs_to_list.board_id)
+    if(data){
+      setLabels(data)
+    }
+  }
+
+  getlabel()
+},[card])
 
 //   open the modal and set cardId in the url
   const openModal = () => {
@@ -38,15 +50,15 @@ useEffect(() => {
   console.log(card.belongs_to_list.board)
 
 return (
-    <div className=" border-gray-500 p-2  py-4 rounded-md shadow-sm" onClick={openModal}>
+    <div className=" border-gray-500 bg-zinc-800 text-gray-200 p-2 border-2  py-4 rounded-md shadow-sm" onClick={openModal}>
     <div>
         <h1>{card.title}</h1>
-        <p className="text-sm text-gray-700">in <Link 
+        <p className="text-sm text-gray-400">in <Link 
         className="underline"
         href={`/boards/${card.belongs_to_list.board_id}`}> {card.belongs_to_list.board.title}</Link></p>
     </div>
-    <p>{card.desc}</p>
-    {isModalOpen && <Modal card={card} labels={[]} onClose={closeModal} />}
+    {/* <p>{card.desc}</p> */}
+    {isModalOpen && <Modal card={card} labels={labels} onClose={closeModal} />}
     </div>
 )
 
