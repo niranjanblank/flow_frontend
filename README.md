@@ -1,36 +1,44 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Flow - Frontend
 
-## Getting Started
+**Flow** is a Trello-like application designed for individual users to manage their tasks efficiently. This repository contains the frontend implementation of Flow using Next.js and Tailwind CSS.
 
-First, run the development server:
+## Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **Responsive Design:** Optimized for both desktop and mobile devices.
+- **Task Management:** Create, update, and delete tasks effortlessly.
+- **Drag-and-Drop:** Move tasks between different lists with a drag-and-drop interface.
+- **Background Images:** Customize board backgrounds with pre-defined or custom images.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Technologies Used
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Next.js:** React framework for server-rendered applications.
+- **Tailwind CSS:** Utility-first CSS framework for styling.
+- **React:** JavaScript library for building user interfaces.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Setup
 
-## Learn More
+To get started with the Flow frontend, follow these steps:
 
-To learn more about Next.js, take a look at the following resources:
+1. **Clone the Repository:**
+    ```bash
+    git clone https://github.com/niranjanblank/flow_frontend
+    ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+2. **Navigate to the Project Directory:**
+    ```bash
+    cd flow-frontend
+    ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+3. **Install Dependencies:**
+    ```bash
+    npm install
+    ```
 
-## Deploy on Vercel
+4. **Run the Development Server:**
+    ```bash
+    npm run dev
+    ```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+   This will start the development server at `http://localhost:3000`.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
