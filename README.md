@@ -41,4 +41,16 @@ To get started with the Flow frontend, follow these steps:
 
    This will start the development server at `http://localhost:3000`.
 
+## Screenshots
+![Home](screenshots/home.png)
+![SignUp](screenshots/signup.png)
+![Boards](screenshots/1.png)
+![CreateBoard](screenshots/9.png)
+![CreateBoard2](screenshots/8.png)
+![Today](screenshots/2.png)
+![Inside1](screenshots/3.png)
+![Inside2](screenshots/4.png)
+![Inside3](screenshots/5.png)
+![Inside4](screenshots/7.png)
+
 
