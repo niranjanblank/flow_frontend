@@ -30,19 +30,23 @@ export function Navbar({
     return (
         <div className={`bg-zinc-800 text-gray-200 ${open ? 'min-w-72' : 'min-w-12'} flex flex-col transition-width duration-60 justify-between p-2 gap-2`}>
             <div>
+                
                 <div className={`flex  ${open ? "justify-between": "justify-center"} items-center py-2 `}>
                     {open && 
                         (
-                        <div className="flex gap-2">
-                            {/* icon */}
-                            <div className="bg-red-300 rounded-lg p-2">
-                                NS
+                        <Link href="/user">
+                            <div className="flex gap-2">
+                                {/* icon */}
+                                <div className="bg-red-300 rounded-lg p-2">
+                                    NS
+                                </div>
+                                <div className="text-sm">
+                                    <h1 className="font-bold">Full Name</h1>
+                                    <h1 className="text-xs text-gray-400">@username</h1>
+                                </div>
                             </div>
-                            <div className="text-sm">
-                                <h1 className="font-bold">Full Name</h1>
-                                <h1 className="text-xs text-gray-400">@username</h1>
-                            </div>
-                        </div>)
+                        </Link>
+                        )
                     }
                     <button className="text-lg" onClick={onCloseHandler}>
                         {open ? <FaAngleLeft /> : <FaAngleRight />}
