@@ -28,6 +28,8 @@ export async function middleware(request: NextRequest) {
           'Authorization': `Bearer ${tokenString}`
         }
       });
+
+
         // If the token is valid, allow access
       if (verifyResponse.ok) {
          // Redirect logged-in users from /, /login, or /signup to /boards
@@ -39,7 +41,7 @@ export async function middleware(request: NextRequest) {
       // if not valid, delete the token and redirect to login
         const response = NextResponse.redirect(new URL('/login', request.url));
         response.cookies.delete('access_token');
-        return NextResponse.redirect(new URL('/login', request.url));
+        return response
       }
     }
 

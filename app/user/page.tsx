@@ -6,7 +6,8 @@ import { getTemplateImages } from "../lib/db_queries/boards";
 import { FaUserCircle } from "react-icons/fa";
 import { UserUpdate } from "../components/Forms/UserUpdateForm";
 
-
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { PasswordUpdate } from "../components/Forms/PasswordUpdateForm";
 export default async function Boards(){
 
       // getting the access token and user_id from the cookie
@@ -26,9 +27,28 @@ export default async function Boards(){
             </div>
             <hr/>
             {/* Form to update user details */}
-            <div className=" p-4 flex flex-col items-center">
-                <UserUpdate/>
+            <div className=" p-4 flex flex-col items-center justify-center ">
+                <Tabs defaultValue="account" className="w-2/4 p-6 border rounded-lg bg-zinc">
+                    <TabsList>
+                        <TabsTrigger value="account">Account</TabsTrigger>
+                        <TabsTrigger value="password">Password</TabsTrigger>
+                        <TabsTrigger value="avatar">Avatar</TabsTrigger>
+                    </TabsList>
+                    <TabsContent value="account">
+                        <p className="text-gray-700 py-4">
+                        Make changes to your account here. Click save when you're done.
+                        </p>
+                    <UserUpdate/>
+                    </TabsContent>
+                    <TabsContent value="password">
+                    <p className="text-gray-700 py-4">
+                    Change your password here.
+                    </p>
+                    <PasswordUpdate/>
+                    </TabsContent>
+                </Tabs>
             </div>
+       
          
 
         </div>

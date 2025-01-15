@@ -8,7 +8,7 @@ import { useFormik } from "formik";
 import moment from "moment";
 
 
-export function UserUpdate(){
+export function PasswordUpdate(){
 
 
 
@@ -17,33 +17,21 @@ export function UserUpdate(){
         <form className=" bg-green-40 rounded-lg  flex flex-col items-start gap-2 w-full">
            
             <div className="flex flex-col w-full">
-                <label>Full Name</label>
-                <input type="text"
+                <label>Old Password</label>
+                <input type="password"
                 className="border-gray-300 border-solid border rounded-md p-2"
                 />
             </div>
             <div className="flex flex-col w-full">
-                <label>User Name</label>
-                <input type="text"
+                <label>New Password</label>
+                <input type="password"
                 className="border-gray-300 border-solid border rounded-md p-2"
                 />
             </div>
-            <div className="flex flex-col w-full">
-                <label>Email</label>
-                <input type="text"
-                className="border-gray-300 border-solid border rounded-md p-2"
-                />
-            </div>
-            <div className="flex flex-col w-full">
-            <textarea
-                id="desc"
-                className='px-2 pt-2 rounded-md min-h-24 border-gray-300 border border-solid' 
-                placeholder='Add a more detailed description'
-            ></textarea>
-              </div>
+   
             
             <button type="submit" className="bg-gray-600 hover:bg-gray-700 w-fit py-2 px-8 text-white rounded-lg ">
-                Save Changes
+                Save Password
             </button>
         </form>
     )
