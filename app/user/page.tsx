@@ -32,7 +32,7 @@ export default async function Boards(){
                     <TabsList>
                         <TabsTrigger value="account">Account</TabsTrigger>
                         <TabsTrigger value="password">Password</TabsTrigger>
-                        <TabsTrigger value="avatar">Avatar</TabsTrigger>
+                       
                     </TabsList>
                     <TabsContent value="account">
                         <p className="text-gray-700 py-4">
