@@ -36,12 +36,12 @@ export default function SignUpForm(){
                     },
                     body: JSON.stringify(signupDetails)
                 });
-
+                const data = await response.json();
                 if (!response.ok) {
-                    throw new Error('Signup failed');
+                    throw new Error(data.detail || 'Signup failed');
                   }
-          
-                  const data = await response.json();
+                  
+              
                   toast.success("Account created. You can now login")
                   console.log("User created")
                   window.location.href = '/login'; // Redirect to protected page
@@ -49,8 +49,8 @@ export default function SignUpForm(){
             }
             catch (error){
                 console.log("Couldnt sign up")
-                toast.error("Failed to create account")
-                console.error(error)
+                toast.error(error.message || "Failed to create account"); // Display error message from backend
+                console.error(error);
             }
 
 
