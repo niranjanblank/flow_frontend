@@ -8,6 +8,7 @@ import { UserUpdate } from "../components/Forms/UserUpdateForm";
 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { PasswordUpdate } from "../components/Forms/PasswordUpdateForm";
+import { getUserById } from "../lib/db_queries/users";
 export default async function Boards(){
 
       // getting the access token and user_id from the cookie
@@ -15,12 +16,14 @@ export default async function Boards(){
   // contains the user_id and username
   const decodedToken = jwtDecode(token);
   
-  const template_images = await getTemplateImages()
+    // get user data from backend
+    const userData = await getUserById(decodedToken.user_id)
+    console.log(userData)
 
 
     return (
         <div className="w-full h-full">
-   
+   {}
             {/* Header */}
             <div className="flex justify-center p-10 items-center text-gray-500 ">
                 <h1 className="text-black font-semibold text-5xl flex gap-2"><FaUserCircle /> Update User Details</h1> 
