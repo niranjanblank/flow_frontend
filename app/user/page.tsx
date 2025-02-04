@@ -9,6 +9,7 @@ import { UserUpdate } from "../components/Forms/UserUpdateForm";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { PasswordUpdate } from "../components/Forms/PasswordUpdateForm";
 import { getUserById } from "../lib/db_queries/users";
+import { User } from "../lib/db_queries/users/interface";
 export default async function Boards(){
 
       // getting the access token and user_id from the cookie
@@ -17,8 +18,8 @@ export default async function Boards(){
   const decodedToken = jwtDecode(token);
   
     // get user data from backend
-    const userData = await getUserById(decodedToken.user_id)
-    console.log(userData)
+    const userData: User = await getUserById(decodedToken.user_id) as User
+
 
 
     return (
@@ -41,7 +42,7 @@ export default async function Boards(){
                         <p className="text-gray-700 py-4">
                         Make changes to your account here. Click save when you're done.
                         </p>
-                    <UserUpdate/>
+                    <UserUpdate user={userData}/>
                     </TabsContent>
                     <TabsContent value="password">
                     <p className="text-gray-700 py-4">
