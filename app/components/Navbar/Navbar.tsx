@@ -63,7 +63,7 @@ export function Navbar({
                             </Link>
                             <Link href="/boards/today">
                             <span className={`flex items-center gap-2 p-2 ${isActive('/boards/today') ? 'bg-gray-700 rounded-md' : ''}`} >
-                                    <BsCalendar2CheckFill className="text-lg" /> Today 
+                                    <BsCalendar2CheckFill className="text-lg" /> Overview 
                             </span>
                             </Link>
                         </div>
