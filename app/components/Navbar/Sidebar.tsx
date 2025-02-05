@@ -7,6 +7,8 @@ import { getCookie } from "@/app/lib/auth";
 import { jwtDecode } from "jwt-decode";
 import { getBoardsOfCurrentUser } from "@/app/lib/db_queries";
 import { getTemplateImages } from "@/app/lib/db_queries/boards";
+import { User } from "@/app/lib/db_queries/users/interface";
+import { getUserById } from "@/app/lib/db_queries/users";
 
 
 export  default async function Sidebar(){
@@ -16,12 +18,15 @@ export  default async function Sidebar(){
   // contains the user_id and username
   const decodedToken = jwtDecode(token);
 
+      // get user data from backend
+  const userData: User = await getUserById(decodedToken.user_id) as User
+
   // get username
   const board_data = await getBoardsOfCurrentUser(decodedToken.user_id)
   // get template_images
   const template_images = await getTemplateImages()
     return (
-        <Navbar>
+        <Navbar user={userData}>
         <div className="flex flex-col gap-1">
           <div className="flex justify-between text-sm">
             <h1>Your boards</h1>

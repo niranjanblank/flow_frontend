@@ -7,10 +7,11 @@ import { RiLogoutBoxLine } from "react-icons/ri";
 import { BsTrello } from "react-icons/bs";
 import { BsCalendar2CheckFill } from "react-icons/bs";
 import { usePathname } from "next/navigation"; 
+import { User } from "@/app/lib/db_queries/users/interface";
 
 export function Navbar({
-    children
-}: {children: React.ReactNode}){
+    children, user
+}: {children: React.ReactNode, user: User}){
 
     const pathname = usePathname(); // Get the current path
 
@@ -37,12 +38,12 @@ export function Navbar({
                         <Link href="/user">
                             <div className="flex gap-2">
                                 {/* icon */}
-                                <div className="bg-red-300 rounded-lg p-2">
-                                    NS
+                                <div className="bg-red-400 text-white rounded-lg p-2 w-10 flex items-center justify-center">
+                                    {user.full_name?(user.full_name.length>0 && user.full_name[0]):"A"}
                                 </div>
                                 <div className="text-sm">
-                                    <h1 className="font-bold">Full Name</h1>
-                                    <h1 className="text-xs text-gray-400">@username</h1>
+                                    <h1 className="font-bold">{user.full_name || "No Name Yet"}</h1>
+                                    <h1 className="text-xs text-gray-400">@{user.username}</h1>
                                 </div>
                             </div>
                         </Link>
