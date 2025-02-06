@@ -19,13 +19,15 @@ export default function AddAnotherList({board_id}:{board_id:number}){
         {formActivate?(
             // render the create list form if formActivate is true
             <CreateList board_id={board_id} setFormActivate = {setFormActivate} />
-        ):( 
+        ):( <div>
+            
                 <button 
                 onClick={()=>{onClickHandler()}}
-                className="hover:bg-zinc-700 hover:bg-opacity-20 flex items-center font-bold text-zinc-600 bg-gray-500 bg-opacity-10 gap-2 p-3 text-sm rounded-lg min-w-64 h-fit">
+                className="hover:bg-zinc-700 hover:bg-opacity-30 flex items-center font-bold text-gray-300 bg-zinc-600 bg-opacity-30 gap-2 p-3 text-sm rounded-lg min-w-64 h-fit">
                     <FaPlus/>
                     <p>Add another list</p>
                 </button>
+                </div>
             )}
        
     </>

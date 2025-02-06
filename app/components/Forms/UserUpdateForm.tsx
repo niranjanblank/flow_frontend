@@ -7,7 +7,10 @@ import { useRouter } from "next/navigation";
 import { useFormik } from "formik";
 import moment from "moment";
 import { User } from "@/app/lib/db_queries/users/interface";
-
+import { MdEmail } from "react-icons/md";
+import { FaUserCheck } from "react-icons/fa6";
+import { FaCircleUser } from "react-icons/fa6";
+import { toast } from "react-toastify";
 
 export function UserUpdate({user}:{user: User}){
     const router = useRouter();
@@ -42,12 +45,13 @@ export function UserUpdate({user}:{user: User}){
                 });
                 const data = await response.json();
                 if (data) {
-                    console.log("User updated");
+                    toast.success("User updated")
                     router.refresh()
-                    console.log(data)
+ 
                 }
             } catch (error) {
                 console.log("User couldn't be updated");
+                toast.error("User couldnt be updated. ", error.message)
                 console.error(error);
             }
            
@@ -62,34 +66,48 @@ export function UserUpdate({user}:{user: User}){
            
             <div className="flex flex-col w-full">
                 <label>Full Name</label>
+                <div
+                className="flex items-center border-gray-300 border-solid border rounded-md p-2 ">
+                <FaUserCheck className="text-gray-600 mr-2 text-lg" /> 
                 <input type="text"
                 id="fullname"
                 value={formik.values.fullname}
                 onChange={formik.handleChange}
-                className="border-gray-300 border-solid border rounded-md p-2"
+                className="bg-transparent w-full  outline-none"
                 />
+                </div>
             </div>
             <div className="flex flex-col w-full">
                 <label>User Name</label>
-                <input type="text"
-                      id="username"
-                      disabled
-                      value={formik.values.username}
-                      onChange={formik.handleChange}
-                className="border-gray-300 border-solid border rounded-md p-2 text-gray-600"
+                <div
+                    className="flex items-center border-gray-300 bg-gray-200 border-solid border rounded-md p-2 ">
+                        <FaCircleUser className="text-gray-600 mr-2 text-lg" /> 
+                        <input type="text"
+                            id="username"
+                            disabled
+                            value={formik.values.username}
+                            onChange={formik.handleChange}
+                        className="text-gray-600 bg-transparent outline-none w-full"
                 />
+                </div>
             </div>
             <div className="flex flex-col w-full">
-                <label>Email</label>
-                <input type="text"
-                id="email"
-                disabled
-                value={formik.values.email}
-                onChange={formik.handleChange}
-                className="border-gray-300 border-solid border rounded-md p-2 text-gray-600"
-                />
-            </div>
+                    <label>Email</label>
+                    <div
+                    className="flex items-center border-gray-300 bg-gray-200 border-solid border rounded-md p-2 ">
+                        <MdEmail className="text-gray-600 mr-2 text-lg" /> 
+                        <input
+                            type="text"
+                            id="email"
+                            disabled
+                            value={formik.values.email}
+                            onChange={formik.handleChange}
+                            className="text-gray-600 bg-transparent outline-none w-full"
+                        />
+                    </div>
+                </div>
             <div className="flex flex-col w-full">
+            <label>Description</label>
             <textarea
                 id="description"
                 value={formik.values.description}
