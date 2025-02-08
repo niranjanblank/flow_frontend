@@ -43,6 +43,8 @@ export function UserUpdate({user}:{user: User}){
                     body: JSON.stringify(userUpdateDetails),
                     credentials: 'include'
                 });
+
+                // TODO: handle the error received 
                 const data = await response.json();
                 if (data) {
                     toast.success("User updated")

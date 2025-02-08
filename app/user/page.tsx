@@ -48,7 +48,7 @@ export default async function Boards(){
                     <p className="text-gray-700 py-4">
                     Change your password here.
                     </p>
-                    <PasswordUpdate/>
+                    <PasswordUpdate user_id={userData.id}/>
                     </TabsContent>
                 </Tabs>
             </div>
