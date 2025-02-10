@@ -76,7 +76,7 @@ export default function AssignLabel({card, labels }: { card: Card, labels: Label
               />
               <span 
 
-              style={{ backgroundColor: label.color }} className="rounded p-1 w-full">
+              style={{ backgroundColor: label.color }} className="rounded p-1 w-full text-white">
                 {label.title} 
               </span>
             </label>

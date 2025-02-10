@@ -3,9 +3,9 @@ import CardToday from "./CardToday";
 import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 
 export default function CardsOverDue({cards}:{cards: any[]}){
-   
     return (
         <div className="flex flex-col py-4 rounded-md">
+             {cards.length>0?(
             <Table className="rounded-md ">
                 <TableHeader>
                 <TableRow>
@@ -22,7 +22,11 @@ export default function CardsOverDue({cards}:{cards: any[]}){
                 ))}
    
                 </TableBody>
-            </Table>
+            </Table>):(
+                <div className="w-full  h-96 text-center flex-col text-gray-600 flex items-center justify-center ">
+                <p className="block text-3xl font-mono">Bravo!!!</p>
+                <p className="block font-mono">You are all caught up</p>
+                </div>)}
          {/* <div>{cards.length>0?(
                 <p className="flex gap-2 mt-2 items-center text-gray-500 text-sm " ><FaRegCheckCircle/>{cards.length} tasks overdue</p>
             ):''}</div>

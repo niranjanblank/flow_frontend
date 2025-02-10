@@ -73,7 +73,7 @@ export default function UpdateLabel({label}:{label: Label}){
     return (
         <div className="flex p-2 gap-2 w-full flex-col">
             <div
-            className="rounded-md flex justify-center items-center p-2"
+            className="rounded-md flex justify-center items-center p-2 text-white"
             style={{backgroundColor:formik.values.color}}
             >{formik.values.title.length > 0? formik.values.title: "Preview"}</div>
             <form

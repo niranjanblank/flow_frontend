@@ -77,3 +77,11 @@ export async function getOverdueCards(){
     const data = await response.json();
     return data
 }
+
+//get upcoming cards
+// get card due today
+export async function getUpcomingCards(){
+    const response = await fetch(`http://localhost:8000/list_card/upcoming/today`, { cache: 'no-store' });
+    const data = await response.json();
+    return data
+}

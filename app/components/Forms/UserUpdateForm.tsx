@@ -52,9 +52,7 @@ export function UserUpdate({user}:{user: User}){
  
                 }
             } catch (error) {
-                console.log("User couldn't be updated");
                 toast.error("User couldnt be updated. ", error.message)
-                console.error(error);
             }
            
         }

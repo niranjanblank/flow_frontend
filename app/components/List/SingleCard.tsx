@@ -7,6 +7,7 @@ import { Draggable } from '@hello-pangea/dnd';
 import { Card, Label } from '@/app/boards/interfaces';
 import { FaRegClock } from "react-icons/fa6";
 import moment from 'moment';
+import LabelTag from '../Label/LabelTag';
 
 export default function SingleCard({ card, index, labels }:{card: Card,index: number,labels: Label[]}) {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -55,13 +56,12 @@ export default function SingleCard({ card, index, labels }:{card: Card,index: nu
               {card.labels.length>0 && (
                 <div className='text-xs flex flex-wrap gap-1'>
                   {card.labels.map(label => (
-                    <span 
-                    className='px-2 rounded-sm py-1'
-                    style={{backgroundColor: label.color}}
-                    key={`card-label-${label.id}`}>{label.title}</span>
+                    <LabelTag label={label}  key={`card-label-${label.id}`}/>
+                
                   ))}
               </div>
-            )}
+              )
+             }
               <h1>
                 {card.title}
               </h1>

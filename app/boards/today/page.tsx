@@ -1,12 +1,14 @@
-import { getCardDueToday, getOverdueCards } from "@/app/lib/db_queries/cards"
+import { getCardDueToday, getOverdueCards, getUpcomingCards } from "@/app/lib/db_queries/cards"
 import Background from "../../../public/assets/bg.png"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import CardsOverDue from "./components/CardsOverDue";
 import CardsDueToday from "./components/CardsDueToday";
+import CardsUpcoming from "./components/Upcoming";
 export default async function Today(){
 
     const cards_due_today: any[] = await getCardDueToday()
     const overdue_cards: any[] = await getOverdueCards()
+    const upcoming_cards: any[] = await getUpcomingCards()
     return (
         <div className="flex flex-col p-4 gap-2 items-center w-full h-full"
      
@@ -24,7 +26,12 @@ export default async function Today(){
             <TabsContent value="today" className="bg-red">
                  <CardsDueToday cards={cards_due_today}/>
             </TabsContent>
-            <TabsContent value="overdue"><CardsOverDue cards={overdue_cards}/></TabsContent>
+            <TabsContent value="overdue">
+                <CardsOverDue cards={overdue_cards}/>
+            </TabsContent>
+            <TabsContent value="upcoming">
+                <CardsUpcoming cards={upcoming_cards}/>
+            </TabsContent>
             </Tabs> 
                
 
