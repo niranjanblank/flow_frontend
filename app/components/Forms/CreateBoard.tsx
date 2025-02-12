@@ -97,10 +97,10 @@ export default function  CreateBoard({user_id, template_images}:{user_id:number,
                                 />
                             ))
                         }
-                        <Popover 
+                        {/* <Popover 
                         content={<BoardBackgroundSelector template_images={template_images}/>}>
                             <button type="button" className="bg-gray-700 hover:bg-gray-800 w-full h-[40px] rounded-sm text-3xl flex justify-center items-center"><HiOutlineDotsHorizontal /></button>
-                            </Popover>
+                            </Popover> */}
 
                     </div>
                     {/* <Popover content={<BoardBackgroundSelector template_images={template_images}/>}>Background Image</Popover> */}

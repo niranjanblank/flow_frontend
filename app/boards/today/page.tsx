@@ -11,7 +11,6 @@ export default async function Today(){
     const overdue_cards: Card[] = await getOverdueCards()
     const upcoming_cards: Card[] = await getUpcomingCards()
     const completed_cards: Card[] = await getCompletedCards()
-    console.log('completed',completed_cards)
     return (
         <div className="flex flex-col p-4 gap-2 items-center w-full h-full"
      

@@ -40,6 +40,45 @@ export async function updateBoardImage(file: File, board_id: number): Promise<{ 
   }
 }
 
+// update background image url 
+export async function updateBoardImageUrl(board_id: number, background_image_url: string) : Promise<{ success: boolean; data: any }> {
+        
+  try {
+
+          const data_to_post = {
+            background_image_url: background_image_url
+          }
+
+     
+          // updating the order of the list
+          const response = await fetch(`http://localhost:8000/boards/${board_id}`, {
+              method: 'PUT',
+              headers: {
+                  'Content-Type': 'application/json',
+              },
+              body: JSON.stringify(data_to_post),
+          });
+
+          if (!response.ok) {
+              throw new Error(`Failed to update board with ID: ${board_id}`);
+          }
+
+          const result = await response.json();          
+          return { success: true, data: result}
+  
+  }
+  catch (error) {
+      console.log("Error updating background image", error);
+      let errorMessage = "An unknown error occurred";
+
+      // Handle the error correctly based on its type
+      if (error instanceof Error) {
+        errorMessage = error.message;
+      }
+      return { success: false, data: errorMessage}
+  }
+}
+
 // update Board title
 export async function updateBoardTitle(data:BoardTitleUpdate): Promise<{ success: boolean; data: any }> {
         
