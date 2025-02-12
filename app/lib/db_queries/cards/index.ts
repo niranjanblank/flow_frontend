@@ -66,22 +66,28 @@ export async function deleteCard(id: number){
 
 // get card due today
 export async function getCardDueToday(){
-    const response = await fetch(`http://localhost:8000/list_card/due/due_today`, { cache: 'no-store' });
+    const response = await fetch(`http://localhost:8000/list_card/cards/due_today`, { cache: 'no-store' });
     const data = await response.json();
     return data
 }
 
 // get card due today
 export async function getOverdueCards(){
-    const response = await fetch(`http://localhost:8000/list_card/overdue/today`, { cache: 'no-store' });
+    const response = await fetch(`http://localhost:8000/list_card/cards/overdue`, { cache: 'no-store' });
     const data = await response.json();
     return data
 }
 
 //get upcoming cards
-// get card due today
 export async function getUpcomingCards(){
-    const response = await fetch(`http://localhost:8000/list_card/upcoming/today`, { cache: 'no-store' });
+    const response = await fetch(`http://localhost:8000/list_card/cards/upcoming`, { cache: 'no-store' });
+    const data = await response.json();
+    return data
+}
+
+//get upcoming cards
+export async function getCompletedCards(){
+    const response = await fetch(`http://localhost:8000/list_card/cards/completed`, { cache: 'no-store' });
     const data = await response.json();
     return data
 }
