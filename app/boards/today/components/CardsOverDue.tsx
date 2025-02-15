@@ -9,7 +9,7 @@ export default function CardsOverDue({cards}:{cards: any[]}){
             <Table className="rounded-md ">
                 <TableHeader>
                 <TableRow>
-                    <TableHead className="w-[100px]">Card Title</TableHead>
+                    <TableHead className="w-[200px]">Card Title</TableHead>
                     <TableHead>Description</TableHead>
                     <TableHead>Board</TableHead>
                     <TableHead>Label</TableHead>
