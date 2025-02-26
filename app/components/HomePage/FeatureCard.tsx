@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 export function FeatureCard({ screenshot, title, subtitle, left }: { screenshot: string; title: string; subtitle: string; left: boolean }) {
     return (
-        <div className={`grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-5xl items-center mb-12`}>
+        <div className={`grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-5xl items-center mb-12 text-white`}>
             {/* Conditionally Render Image First or Text First */}
             {left ? (
                 <>

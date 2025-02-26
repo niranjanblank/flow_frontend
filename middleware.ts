@@ -1,5 +1,11 @@
 import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
+import {LRUCache} from "lru-cache"
+// setup lru-cache
+const cache = new LRUCache<string, boolean>({
+  max: 500, // store upto 500 tokens
+  ttl: 1000 * 60 * 5 // cache for 5 minutes
+})
 
 
 export async function middleware(request: NextRequest) {
@@ -11,13 +17,18 @@ export async function middleware(request: NextRequest) {
        // Allow access to /login, /signup, and / (home) without a token
        if (request.nextUrl.pathname === '/login' || request.nextUrl.pathname === '/signup' || request.nextUrl.pathname === '/') {
         return NextResponse.next();
-    }
-
+        }   
         return NextResponse.redirect(new URL('/login', request.url));
       }
 
         // Ensure the token is a string
     const tokenString = String(token.value);
+
+    // check if token is in the cache
+    if (cache.has(tokenString)){
+      console.log(" Using cached token validation");
+      return handleRedirects(request);
+    }
 
     
     //   if we have token in cookie and check if the token is valid
@@ -32,17 +43,22 @@ export async function middleware(request: NextRequest) {
 
         // If the token is valid, allow access
       if (verifyResponse.ok) {
+        cache.set(tokenString, true);
          // Redirect logged-in users from /, /login, or /signup to /boards
-         if (request.nextUrl.pathname === '/' || request.nextUrl.pathname === '/login' || request.nextUrl.pathname === '/signup') {
-          return NextResponse.redirect(new URL('/boards', request.url));
-        }
-      return NextResponse.next();
+         return handleRedirects(request);
       } else {
-      // if not valid, delete the token and redirect to login
+        // if not valid, delete the token and redirect to login
         const response = NextResponse.redirect(new URL('/login', request.url));
         response.cookies.delete('access_token');
         return response
       }
+    }
+
+    function handleRedirects(request: NextRequest) {
+      if (['/', '/login', '/signup'].includes(request.nextUrl.pathname)) {
+        return NextResponse.redirect(new URL('/boards', request.url));
+      }
+      return NextResponse.next();
     }
 
     export const config = {

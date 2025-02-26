@@ -4,6 +4,7 @@ import Link from "next/link";
 import { FaTasks, FaRegCheckCircle, FaMobileAlt } from "react-icons/fa";
 
 import { FeatureCard } from "./components/HomePage/FeatureCard";
+import Footer from "./components/HomePage/Footer";
 
 const featureData = [
     {
@@ -84,16 +85,21 @@ export default function Home() {
 
         </main>
         
-        <section className="flex flex-col items-center justify-center w-full gap-4 py-4">
-            {featureData.map((feature, index) => (
-                <FeatureCard
-                    key={index}
-                    screenshot={feature.screenshot}
-                    title={feature.title}
-                    subtitle={feature.subtitle}
-                    left={feature.left}
-                />
-            ))}
+        <section 
+            id="features"
+            className="flex flex-col items-center justify-center w-full gap-4 py-4 bg-zinc-800">
+                {featureData.map((feature, index) => (
+                    <FeatureCard
+                        key={index}
+                        screenshot={feature.screenshot}
+                        title={feature.title}
+                        subtitle={feature.subtitle}
+                        left={feature.left}
+                    />
+                ))}
+            </section>
+        <section >
+           <Footer/>
         </section>
         </>
     );
